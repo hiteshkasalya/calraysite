@@ -15,9 +15,11 @@ import {
 import FeatureCard from "./components/FeatureCard";
 import HeroPreview from "./components/HeroPreview";
 import MockPhone from "./components/MockPhone";
+import SeoHead from "./components/SeoHead";
 import RotatingCore from "./components/RotatingCore";
 import SectionHeading from "./components/SectionHeading";
 import { featureCards, statPills, testimonials } from "./data";
+import { brandHighlights, faqItems } from "./seo";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -65,20 +67,22 @@ const bottomTiles = [
 
 function App() {
   return (
-    <div className="relative min-h-screen overflow-hidden text-[#102235]">
+    <>
+      <SeoHead />
+      <div className="relative min-h-screen overflow-x-hidden text-[#102235]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(47,111,237,0.08),transparent_26%),radial-gradient(circle_at_85%_10%,rgba(124,92,255,0.06),transparent_22%),radial-gradient(circle_at_75%_85%,rgba(15,159,110,0.04),transparent_24%)]" />
 
       <header className="sticky top-0 z-50 border-b border-white/70 bg-white/72 backdrop-blur-2xl">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
-          <a href="#home" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neon-400/20 bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
-              C
-            </span>
-            <div>
-              <p className="font-display text-lg font-semibold tracking-tight text-[#102235]">Calray</p>
-              <p className="text-xs uppercase tracking-[0.28em] text-[#66768c]">AI Fitness</p>
-            </div>
-          </a>
+            <a href="#home" className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neon-400/20 bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
+                C
+              </span>
+              <div>
+                <p className="font-display text-lg font-semibold tracking-tight text-[#102235]">Calray AI</p>
+                <p className="text-xs uppercase tracking-[0.28em] text-[#66768c]">AI Fitness</p>
+              </div>
+            </a>
 
           <nav className="hidden items-center gap-8 text-sm text-[#66768c] md:flex">
             <a className="transition hover:text-[#102235]" href="#features">
@@ -114,16 +118,20 @@ function App() {
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="max-w-3xl">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-neon-600 shadow-[0_12px_40px_rgba(47,111,237,0.08)]">
                 <Sparkles className="h-3.5 w-3.5" />
-                Premium AI calorie detection
+                Official Calray AI website
               </div>
 
-              <h1 className="font-display text-5xl font-semibold tracking-tight text-[#102235] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.95]">
-                AI That Tracks Your Calories &amp; Fitness
+              <h1 className="font-display text-4xl font-semibold tracking-tight text-[#102235] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.95]">
+                Calray AI
+                <span className="mt-2 block text-2xl font-medium tracking-tight text-neon-600 sm:text-3xl">
+                  by Hitesh Kasalya
+                </span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-[#66768c] sm:text-lg">
-                Calray brings meal detection, barcode lookup, favorites, custom foods, and workout planning into one
-                calm daily routine, so users get the premium feel of a startup app with the clarity of Apple and Stripe.
+                Calray AI brings meal detection, barcode lookup, favorites, custom foods, and workout planning into
+                one calm daily routine. If you searched for Calray, Calray AI, or Hitesh Kasalya, this is the official
+                homepage.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -147,7 +155,7 @@ function App() {
                 {["Meal photo", "Barcode lookup", "Favorites", "Workout plan"].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/80 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-[0.22em]"
+                    className="rounded-full border border-white/80 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] sm:text-[11px] sm:tracking-[0.22em]"
                   >
                     {item}
                   </span>
@@ -189,7 +197,7 @@ function App() {
           <SectionHeading
             eyebrow="About us"
             title="Built from the app color system."
-            description="We matched the landing page to the same blue, purple, lilac, and soft-mint palette used in Calray, so the brand feels like one premium product from top to bottom."
+            description="We matched the landing page to the same blue, purple, lilac, and soft-mint palette used in Calray AI, so the brand feels like one premium product from top to bottom."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
@@ -199,7 +207,7 @@ function App() {
                 One calm place for meal detection, training, and progress.
               </h3>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-[#66768c] sm:text-base">
-                Calray turns calorie tracking into a clean ritual: photo scans, barcode lookup, favorites, custom
+                Calray AI turns calorie tracking into a clean ritual: photo scans, barcode lookup, favorites, custom
                 foods, and adaptive workouts all live in one premium flow that feels easy to trust.
               </p>
 
@@ -230,32 +238,69 @@ function App() {
               </div>
             </article>
 
-            <article className="rounded-[2rem] border border-neon-300/40 bg-gradient-to-br from-white via-white to-neon-100/70 p-7 shadow-panel backdrop-blur-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">Founder note</p>
-              <blockquote className="mt-4 text-lg leading-8 text-[#102235] sm:text-xl">
-                "We built Calray so calorie tracking and fitness coaching would feel simple, premium, and genuinely
-                useful every day."
-              </blockquote>
-              <div className="mt-8 flex items-center gap-4 border-t border-slate-200/80 pt-5">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
-                  C
+              <article className="rounded-[2rem] border border-neon-300/40 bg-gradient-to-br from-white via-white to-neon-100/70 p-7 shadow-panel backdrop-blur-xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">Founder note</p>
+                <blockquote className="mt-4 text-lg leading-8 text-[#102235] sm:text-xl">
+                  "We built Calray AI so calorie tracking and fitness coaching would feel simple, premium, and
+                  genuinely useful every day."
+                </blockquote>
+                <div className="mt-8 flex items-center gap-4 border-t border-slate-200/80 pt-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
+                    C
+                  </div>
+                  <div>
+                    <p className="font-display text-base font-semibold text-[#102235]">Founder, Calray AI</p>
+                    <p className="text-sm text-[#66768c]">App-first product vision</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-display text-base font-semibold text-[#102235]">Founder, Calray</p>
-                  <p className="text-sm text-[#66768c]">App-first product vision</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
+              </article>
+            </div>
+          </section>
 
-        <section id="motion" className="relative mx-auto w-full max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-          <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
+          <section id="brand" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
             <SectionHeading
-              eyebrow="3D motion"
-              title="A rotating core keeps the page feeling alive."
-              description="This section uses smooth Framer Motion layers to give Calray a futuristic, high-end startup feel without adding clutter."
+              eyebrow="Official brand"
+              title="Calray AI by Hitesh Kasalya"
+              description="This page is the official home for Calray, Calray AI, and the founder name people search for."
             />
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {brandHighlights.map((item) => (
+                <article
+                  key={item.label}
+                  className="rounded-[1.75rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">{item.label}</p>
+                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#102235]">
+                    {item.value}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#66768c]">{item.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">FAQ</p>
+              <div className="mt-4 grid gap-4 lg:grid-cols-3">
+                {faqItems.map((item) => (
+                  <article key={item.question} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5">
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-[#102235]">
+                      {item.question}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-[#66768c]">{item.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="motion" className="relative mx-auto w-full max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+            <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
+              <SectionHeading
+                eyebrow="3D motion"
+                title="A rotating core keeps the page feeling alive."
+                description="This section uses smooth Framer Motion layers to give Calray AI a futuristic, high-end startup feel without adding clutter."
+              />
 
             <motion.div
               variants={fadeUp}
@@ -273,7 +318,7 @@ function App() {
           <SectionHeading
             eyebrow="App preview"
             title="A desktop dashboard and mobile screens that mirror the product."
-            description="The preview shows the real Calray flow: scan food, confirm calories, save the favorite, then let the coach guide the next move."
+            description="The preview shows the real Calray AI flow: scan food, confirm calories, save the favorite, then let the coach guide the next move."
           />
 
           <div className="mt-10 grid gap-6 xl:grid-cols-[1.12fr_0.88fr]">
@@ -473,13 +518,13 @@ function App() {
       <footer className="px-6 pb-10 lg:px-8">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 rounded-[2rem] border border-white/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(238,244,255,0.86),rgba(245,248,244,0.92))] p-6 shadow-panel backdrop-blur-xl md:flex-row md:items-center lg:px-8 lg:py-7">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-600/80">Calray AI</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-600/80">Calray AI by Hitesh Kasalya</p>
             <h2 id="cta" className="mt-3 font-display text-2xl font-semibold tracking-tight text-[#102235] sm:text-3xl">
               Start your fitness journey with AI
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-[#66768c] sm:text-base">
-              A minimalist, premium landing page that mirrors the app&apos;s color system and turns calorie detection
-              into a polished startup story.
+              A minimalist, premium landing page for Calray AI by Hitesh Kasalya that mirrors the app&apos;s color
+              system and turns calorie detection into a polished startup story.
             </p>
           </div>
 
@@ -492,7 +537,8 @@ function App() {
           </a>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 

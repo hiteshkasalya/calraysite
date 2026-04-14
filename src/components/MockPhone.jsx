@@ -18,7 +18,7 @@ export default function MockPhone({ title, subtitle, icon: Icon, progress, chips
         <div className="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(47,111,237,0.1),transparent_72%)]" />
 
         <div className="relative flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.32em] text-[#66768c]">
-          <span>Calray mobile</span>
+          <span>Calray AI mobile</span>
           <span>09:41</span>
         </div>
 

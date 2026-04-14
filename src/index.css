@@ -17,6 +17,7 @@ body {
   margin: 0;
   font-family: "Manrope", sans-serif;
   color: #102235;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 14% 14%, rgba(47, 111, 237, 0.16), transparent 26%),
     radial-gradient(circle at 84% 12%, rgba(124, 92, 255, 0.12), transparent 22%),

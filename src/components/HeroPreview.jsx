@@ -25,13 +25,13 @@ export default function HeroPreview() {
     >
       <div className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(circle_at_20%_20%,rgba(47,111,237,0.14),transparent_35%),radial-gradient(circle_at_82%_18%,rgba(124,92,255,0.12),transparent_28%)] blur-3xl" />
 
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/90 p-5 shadow-[0_32px_100px_rgba(15,23,42,0.10)] backdrop-blur-2xl">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/90 p-4 shadow-[0_32px_100px_rgba(15,23,42,0.10)] backdrop-blur-2xl sm:p-5">
         <div className="absolute -right-24 -top-12 h-56 w-56 rounded-full bg-neon-300/30 blur-3xl" />
         <div className="absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-neon-100/70 blur-3xl" />
 
         <div className="relative flex items-center justify-between border-b border-slate-200/80 pb-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.38em] text-[#66768c]">Calray dashboard</p>
+            <p className="text-xs uppercase tracking-[0.38em] text-[#66768c]">Calray AI dashboard</p>
             <h3 className="mt-2 font-display text-2xl font-semibold text-[#102235]">Today&apos;s AI summary</h3>
           </div>
           <div className="inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-neon-400/10 px-3 py-1 text-xs font-semibold text-neon-600">
@@ -75,7 +75,7 @@ export default function HeroPreview() {
               </motion.div>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {[
                 ["Protein", "137g"],
                 ["Steps", "8.2k"],
@@ -114,7 +114,7 @@ export default function HeroPreview() {
                   </div>
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-2">
+                <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
                   {[
                     ["Protein", "42g"],
                     ["Carbs", "58g"],
@@ -134,9 +134,9 @@ export default function HeroPreview() {
                 <BadgeCheck className="h-4 w-4 text-neon-600" />
                 AI coach
               </div>
-              <p className="mt-2 text-sm leading-6 text-[#66768c]">
-                Your steps are low today, so Calray recommends a lighter session and an earlier protein meal.
-              </p>
+                <p className="mt-2 text-sm leading-6 text-[#66768c]">
+                  Your steps are low today, so Calray AI recommends a lighter session and an earlier protein meal.
+                </p>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
