@@ -238,7 +238,7 @@ function App() {
                   <div className="rounded-[1.8rem] border border-black/8 bg-gradient-to-b from-white to-[#fbfdf9] p-4">
                     <div className="rounded-[1.6rem] border border-black/8 bg-white p-3">
                       <img
-                        src="/calray-logo.jpeg"
+                        src="/calray-logo.jpeg?v=20260415"
                         alt="CalRay logo"
                         className="aspect-square w-full rounded-[1.25rem] object-contain"
                       />
@@ -471,7 +471,7 @@ function App() {
                   <div className="rounded-[1.8rem] border border-black/8 bg-[#fcfbf8] p-4">
                     <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-white p-3">
                       <img
-                        src="/calray-logo.jpeg"
+                        src="/calray-logo.jpeg?v=20260415"
                         alt="CalRay logo"
                         className="aspect-square w-full rounded-[1.25rem] object-contain"
                       />

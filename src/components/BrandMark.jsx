@@ -5,7 +5,7 @@ export default function BrandMark({ size = 64, className = "", label = "CalRay",
         className="overflow-hidden rounded-[1.5rem] border border-black/10 bg-white shadow-[0_20px_50px_rgba(18,18,18,0.08)]"
         style={{ width: size, height: size }}
       >
-        <img src="/calray-logo.jpeg" alt="CalRay logo" className="h-full w-full object-contain" />
+        <img src="/calray-logo.jpeg?v=20260415" alt="CalRay logo" className="h-full w-full object-contain" />
       </div>
 
       {label ? (
