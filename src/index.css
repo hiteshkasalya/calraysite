@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -16,12 +16,12 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: "Manrope", sans-serif;
+  color: #102235;
   background:
-    radial-gradient(circle at 15% 10%, rgba(47, 111, 237, 0.18), transparent 28%),
-    radial-gradient(circle at 85% 15%, rgba(124, 92, 255, 0.12), transparent 22%),
-    radial-gradient(circle at 75% 85%, rgba(238, 244, 255, 0.08), transparent 24%),
-    linear-gradient(180deg, #050816 0%, #091126 45%, #050816 100%);
-  color: white;
+    radial-gradient(circle at 14% 14%, rgba(47, 111, 237, 0.16), transparent 26%),
+    radial-gradient(circle at 84% 12%, rgba(124, 92, 255, 0.12), transparent 22%),
+    radial-gradient(circle at 72% 82%, rgba(15, 159, 110, 0.08), transparent 22%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4ff 42%, #f5f8f4 100%);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -36,11 +36,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(219, 234, 254, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(219, 234, 254, 0.045) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-size: 76px 76px;
   mask-image: radial-gradient(circle at center, black 28%, transparent 82%);
-  opacity: 0.18;
+  opacity: 0.2;
 }
 
 body::after {
@@ -48,10 +48,10 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at center, transparent 0%, transparent 56%, rgba(5, 8, 22, 0.38) 100%);
+  background: radial-gradient(circle at center, transparent 0%, transparent 58%, rgba(245, 248, 244, 0.38) 100%);
 }
 
 ::selection {
-  background: rgba(47, 111, 237, 0.28);
-  color: white;
+  background: rgba(47, 111, 237, 0.24);
+  color: #102235;
 }

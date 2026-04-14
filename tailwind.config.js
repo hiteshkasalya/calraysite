@@ -22,8 +22,8 @@ export default {
         },
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(47, 111, 237, 0.18), 0 24px 80px rgba(47, 111, 237, 0.12)",
-        panel: "0 18px 60px rgba(0, 0, 0, 0.45)",
+        glow: "0 0 0 1px rgba(47, 111, 237, 0.12), 0 20px 60px rgba(47, 111, 237, 0.12)",
+        panel: "0 24px 80px rgba(15, 23, 42, 0.08)",
       },
       keyframes: {
         float: {
