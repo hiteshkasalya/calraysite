@@ -148,7 +148,12 @@ function App() {
 
         <main id="home">
           <section className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-24">
-            <motion.div variants={fadeUp} initial="hidden" animate="show" className="max-w-3xl">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="max-w-3xl rounded-[2.25rem] border border-black/10 bg-white/90 p-5 shadow-[0_24px_70px_rgba(18,18,18,0.08)] backdrop-blur-xl lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+            >
               <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d6468] shadow-[0_14px_40px_rgba(18,18,18,0.05)]">
                 <Sparkles className="h-3.5 w-3.5 text-[#0f6f85]" />
                 Built from the logo palette
