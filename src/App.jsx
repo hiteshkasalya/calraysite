@@ -1,25 +1,17 @@
 import { motion } from "framer-motion";
 import {
-  Activity,
   ArrowRight,
   BadgeCheck,
   Barcode,
   ChevronRight,
   Dumbbell,
-  MessageSquareQuote,
-  MonitorSmartphone,
   ScanLine,
+  ShieldCheck,
   Sparkles,
-  Star,
 } from "lucide-react";
-import FeatureCard from "./components/FeatureCard";
-import HeroPreview from "./components/HeroPreview";
-import MockPhone from "./components/MockPhone";
+import BrandMark from "./components/BrandMark";
 import SeoHead from "./components/SeoHead";
-import RotatingCore from "./components/RotatingCore";
-import SectionHeading from "./components/SectionHeading";
-import { featureCards, statPills, testimonials } from "./data";
-import { brandHighlights, faqItems } from "./seo";
+import { brandHighlights, faqItems, palette } from "./seo";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -32,130 +24,170 @@ const spring = {
   damping: 18,
 };
 
-const previewFeed = [
+const heroSignals = [
+  {
+    title: "Meal scan",
+    text: "Photo + barcode",
+    tone: "#8fd8f0",
+  },
+  {
+    title: "Favorites",
+    text: "One-tap repeats",
+    tone: "#8dd94b",
+  },
+  {
+    title: "Coach",
+    text: "Adaptive prompts",
+    tone: "#ffd84d",
+  },
+];
+
+const productPillars = [
   {
     icon: ScanLine,
-    title: "Meal photo",
-    description: "Greek yogurt, berries, oats",
-    meta: "620 kcal",
+    title: "Scan meals fast",
+    description: "Photo recognition and barcode lookup keep logging quick and calm.",
+    tint: "bg-[#e8f8fd]",
+    iconTone: "text-[#0f6f85]",
   },
   {
-    icon: Barcode,
-    title: "Barcode lookup",
-    description: "Protein bar, 21g protein",
-    meta: "Saved",
+    icon: BadgeCheck,
+    title: "Save favorites",
+    description: "Repeat meals and custom foods stay one tap away in a clean flow.",
+    tint: "bg-[#eef9de]",
+    iconTone: "text-[#3f7f10]",
   },
   {
-    icon: MonitorSmartphone,
-    title: "Coach tip",
-    description: "Walk 15 minutes after dinner",
-    meta: "Adaptive",
+    icon: Dumbbell,
+    title: "Coach training",
+    description: "Workout guidance adapts to steps, recovery, and the rest of the day.",
+    tint: "bg-[#fff4cd]",
+    iconTone: "text-[#9a7000]",
   },
 ];
 
-const dashboardStats = [
-  ["Protein", "137g", "w-[78%]"],
-  ["Calories", "1,842 / 2,100", "w-[87%]"],
-  ["Workout", "Moderate", "w-[64%]"],
+const flowSteps = [
+  {
+    number: "01",
+    title: "Capture",
+    description: "Take a meal photo or scan a barcode from any packaged food.",
+  },
+  {
+    number: "02",
+    title: "Confirm",
+    description: "Review calories and macros in a calm card before logging it.",
+  },
+  {
+    number: "03",
+    title: "Adjust",
+    description: "CalRay suggests the next meal or workout based on the day ahead.",
+  },
 ];
 
-const bottomTiles = [
-  ["Favorites", "12 saved meals"],
-  ["Custom foods", "Fast macro entries"],
-  ["Weekly progress", "Consistency up 18%"],
+const dashboardMetrics = [
+  {
+    label: "Calories",
+    value: "1,842 / 2,100",
+    width: "w-[87%]",
+    fill: "#8fd8f0",
+  },
+  {
+    label: "Protein",
+    value: "137g",
+    width: "w-[78%]",
+    fill: "#8dd94b",
+  },
+  {
+    label: "Workout",
+    value: "Moderate",
+    width: "w-[64%]",
+    fill: "#ffd84d",
+  },
 ];
+
+const quickTags = ["Meal scan", "Barcode lookup", "Favorites", "Workout coach"];
 
 function App() {
   return (
     <>
       <SeoHead />
-      <div className="relative min-h-screen overflow-x-hidden text-[#102235]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(47,111,237,0.08),transparent_26%),radial-gradient(circle_at_85%_10%,rgba(124,92,255,0.06),transparent_22%),radial-gradient(circle_at_75%_85%,rgba(15,159,110,0.04),transparent_24%)]" />
+      <div className="relative min-h-screen overflow-x-hidden bg-[#fcfbf8] text-[#151515]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(143,216,240,0.18),transparent_24%),radial-gradient(circle_at_86%_10%,rgba(141,217,75,0.16),transparent_22%),radial-gradient(circle_at_70%_82%,rgba(255,223,82,0.14),transparent_24%),radial-gradient(circle_at_20%_82%,rgba(248,161,76,0.09),transparent_20%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.14))]" />
 
-      <header className="sticky top-0 z-50 border-b border-white/70 bg-white/72 backdrop-blur-2xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
+        <header className="sticky top-0 z-50 border-b border-black/8 bg-white/78 backdrop-blur-2xl">
+          <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
             <a href="#home" className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neon-400/20 bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
-                C
-              </span>
-              <div>
-                <p className="font-display text-lg font-semibold tracking-tight text-[#102235]">Calray AI</p>
-                <p className="text-xs uppercase tracking-[0.28em] text-[#66768c]">AI Fitness</p>
-              </div>
+              <BrandMark size={56} label="CalRay" subtitle="AI calorie and fitness tracker coach" />
             </a>
 
-          <nav className="hidden items-center gap-8 text-sm text-[#66768c] md:flex">
-            <a className="transition hover:text-[#102235]" href="#features">
-              Features
-            </a>
-            <a className="transition hover:text-[#102235]" href="#about">
-              About
-            </a>
-            <a className="transition hover:text-[#102235]" href="#motion">
-              Motion
-            </a>
-            <a className="transition hover:text-[#102235]" href="#preview">
-              Preview
-            </a>
-            <a className="transition hover:text-[#102235]" href="#testimonials">
-              Testimonials
-            </a>
-          </nav>
+            <nav className="hidden items-center gap-8 text-sm font-medium text-[#5d6468] md:flex">
+              <a className="transition hover:text-[#151515]" href="#product">
+                Product
+              </a>
+              <a className="transition hover:text-[#151515]" href="#flow">
+                Flow
+              </a>
+              <a className="transition hover:text-[#151515]" href="#brand">
+                Brand
+              </a>
+              <a className="transition hover:text-[#151515]" href="#faq">
+                FAQ
+              </a>
+            </nav>
 
-          <a
-            href="#cta"
-            className="inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
-          >
-            Get Started
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </header>
+            <a
+              href="#cta"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#151515] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(18,18,18,0.12)] transition hover:-translate-y-0.5"
+            >
+              Request demo
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </header>
 
-      <main id="home">
-        <section className="relative">
-          <div className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:px-8 lg:py-24">
+        <main id="home">
+          <section className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-24">
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="max-w-3xl">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-neon-600 shadow-[0_12px_40px_rgba(47,111,237,0.08)]">
-                <Sparkles className="h-3.5 w-3.5" />
-                Official Calray AI website
+              <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d6468] shadow-[0_14px_40px_rgba(18,18,18,0.05)]">
+                <Sparkles className="h-3.5 w-3.5 text-[#0f6f85]" />
+                Built from the logo palette
               </div>
 
-              <h1 className="font-display text-4xl font-semibold tracking-tight text-[#102235] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.95]">
-                Calray AI
-                <span className="mt-2 block text-2xl font-medium tracking-tight text-neon-600 sm:text-3xl">
-                  by Hitesh Kasalya
+              <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-[#151515] sm:text-7xl lg:text-[6rem] lg:leading-[0.92]">
+                CalRay
+                <span className="mt-4 block text-2xl font-medium tracking-tight text-[#5d6468] sm:text-3xl">
+                  AI calorie and fitness tracker coach
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-[#66768c] sm:text-lg">
-                Calray AI brings meal detection, barcode lookup, favorites, custom foods, and workout planning into
-                one calm daily routine. If you searched for Calray, Calray AI, or Hitesh Kasalya, this is the official
-                homepage.
+              <p className="mt-6 max-w-2xl text-base leading-8 text-[#5d6468] sm:text-lg">
+                Official site of CalRay by Hitesh Kasalya. A clean, premium home for meal scans, barcode lookup,
+                favorites, custom foods, and adaptive workout guidance.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
-                  href="#preview"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 px-6 font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+                  href="#product"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#151515] px-6 font-semibold text-white shadow-[0_18px_50px_rgba(18,18,18,0.12)] transition hover:-translate-y-0.5"
                 >
-                  Get Started
+                  Explore product
                   <ArrowRight className="h-4.5 w-4.5" />
                 </a>
                 <a
-                  href="#features"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/80 bg-white/85 px-6 font-semibold text-[#102235] shadow-[0_16px_40px_rgba(15,23,42,0.06)] transition hover:border-neon-300/70 hover:bg-white"
+                  href="#brand"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/85 px-6 font-semibold text-[#151515] shadow-[0_16px_40px_rgba(18,18,18,0.06)] transition hover:border-black/20 hover:bg-white"
                 >
-                  Explore features
+                  View brand system
                   <ChevronRight className="h-4.5 w-4.5" />
                 </a>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-[#66768c]">
-                {["Meal photo", "Barcode lookup", "Favorites", "Workout plan"].map((item) => (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {quickTags.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/80 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] sm:text-[11px] sm:tracking-[0.22em]"
+                    className="rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#6b6f72] sm:text-[11px]"
                   >
                     {item}
                   </span>
@@ -163,380 +195,370 @@ function App() {
               </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {statPills.map((item) => (
+                {heroSignals.map((card) => (
                   <div
-                    key={item.label}
-                    className="rounded-[1.5rem] border border-white/80 bg-white/85 p-4 shadow-panel backdrop-blur-xl"
+                    key={card.title}
+                    className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4 shadow-[0_18px_50px_rgba(18,18,18,0.06)] backdrop-blur-xl"
                   >
-                    <p className="font-display text-2xl font-semibold text-[#102235]">{item.value}</p>
-                    <p className="mt-1 text-sm text-[#66768c]">{item.label}</p>
+                    <div className="h-2 w-10 rounded-full" style={{ backgroundColor: card.tone }} />
+                    <p className="mt-4 font-display text-xl font-semibold text-[#151515]">{card.title}</p>
+                    <p className="mt-1 text-sm text-[#5d6468]">{card.text}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            <HeroPreview />
-          </div>
-        </section>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.12, ...spring }}
+              className="relative"
+            >
+              <div className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(circle_at_20%_20%,rgba(143,216,240,0.24),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(141,217,75,0.20),transparent_24%),radial-gradient(circle_at_78%_84%,rgba(255,223,82,0.18),transparent_22%)] blur-3xl" />
 
-        <section id="features" className="relative mx-auto w-full max-w-7xl px-6 py-6 lg:px-8 lg:py-12">
-          <SectionHeading
-            eyebrow="Features"
-            title="Everything the app needs to feel fast, calm, and premium."
-            description="The website is built around the same product flow as the app: scan a meal, confirm the numbers, save the favorite, then let the coach guide the next move."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
-            {featureCards.map((card, index) => (
-              <FeatureCard key={card.title} index={index} {...card} />
-            ))}
-          </div>
-        </section>
-
-        <section id="about" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-          <SectionHeading
-            eyebrow="About us"
-            title="Built from the app color system."
-            description="We matched the landing page to the same blue, purple, lilac, and soft-mint palette used in Calray AI, so the brand feels like one premium product from top to bottom."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-            <article className="rounded-[2rem] border border-white/80 bg-white/85 p-7 shadow-panel backdrop-blur-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">Our mission</p>
-              <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#102235] sm:text-3xl">
-                One calm place for meal detection, training, and progress.
-              </h3>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-[#66768c] sm:text-base">
-                Calray AI turns calorie tracking into a clean ritual: photo scans, barcode lookup, favorites, custom
-                foods, and adaptive workouts all live in one premium flow that feels easy to trust.
-              </p>
-
-              <ul className="mt-6 space-y-3">
-                {[
-                  "Meal photo and barcode logging stay fast enough to use every day.",
-                  "Favorites and custom foods turn repeat logging into one tap.",
-                  "Workout guidance reacts to recovery, steps, and the rest of the day.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-neon-600" />
-                    <span className="text-sm leading-7 text-[#66768c]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                {[
-                  ["Palette", "Blue + purple"],
-                  ["Experience", "Apple-like clarity"],
-                  ["Focus", "Daily consistency"],
-                ].map(([label, value]) => (
-                  <div key={label} className="rounded-2xl border border-white/80 bg-white/90 px-4 py-3">
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-[#66768c]">{label}</p>
-                    <p className="mt-2 font-semibold text-[#102235]">{value}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-              <article className="rounded-[2rem] border border-neon-300/40 bg-gradient-to-br from-white via-white to-neon-100/70 p-7 shadow-panel backdrop-blur-xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">Founder note</p>
-                <blockquote className="mt-4 text-lg leading-8 text-[#102235] sm:text-xl">
-                  "We built Calray AI so calorie tracking and fitness coaching would feel simple, premium, and
-                  genuinely useful every day."
-                </blockquote>
-                <div className="mt-8 flex items-center gap-4 border-t border-slate-200/80 pt-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-white shadow-glow">
-                    C
-                  </div>
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-white/86 p-5 shadow-[0_32px_100px_rgba(18,18,18,0.10)] backdrop-blur-xl">
+                <div className="flex items-center justify-between border-b border-black/8 pb-4">
                   <div>
-                    <p className="font-display text-base font-semibold text-[#102235]">Founder, Calray AI</p>
-                    <p className="text-sm text-[#66768c]">App-first product vision</p>
+                    <p className="text-[11px] uppercase tracking-[0.34em] text-[#6b6f72]">App preview</p>
+                    <h2 className="mt-2 font-display text-2xl font-semibold text-[#151515]">Meal to movement</h2>
                   </div>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section id="brand" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <SectionHeading
-              eyebrow="Official brand"
-              title="Calray AI by Hitesh Kasalya"
-              description="This page is the official home for Calray, Calray AI, and the founder name people search for."
-            />
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {brandHighlights.map((item) => (
-                <article
-                  key={item.label}
-                  className="rounded-[1.75rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">{item.label}</p>
-                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#102235]">
-                    {item.value}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#66768c]">{item.description}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-600/80">FAQ</p>
-              <div className="mt-4 grid gap-4 lg:grid-cols-3">
-                {faqItems.map((item) => (
-                  <article key={item.question} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5">
-                    <h3 className="font-display text-lg font-semibold tracking-tight text-[#102235]">
-                      {item.question}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[#66768c]">{item.answer}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section id="motion" className="relative mx-auto w-full max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-            <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
-              <SectionHeading
-                eyebrow="3D motion"
-                title="A rotating core keeps the page feeling alive."
-                description="This section uses smooth Framer Motion layers to give Calray AI a futuristic, high-end startup feel without adding clutter."
-              />
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              className="relative rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-panel backdrop-blur-xl"
-            >
-              <RotatingCore />
-            </motion.div>
-          </div>
-        </section>
-
-        <section id="preview" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-          <SectionHeading
-            eyebrow="App preview"
-            title="A desktop dashboard and mobile screens that mirror the product."
-            description="The preview shows the real Calray AI flow: scan food, confirm calories, save the favorite, then let the coach guide the next move."
-          />
-
-          <div className="mt-10 grid gap-6 xl:grid-cols-[1.12fr_0.88fr]">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl"
-            >
-              <div className="flex items-center justify-between border-b border-slate-200/80 pb-4">
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.32em] text-[#66768c]">Desktop preview</p>
-                  <h3 className="mt-2 font-display text-2xl font-semibold text-[#102235]">Daily control panel</h3>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-neon-400/20 bg-neon-400/10 px-3 py-1 text-xs font-semibold text-neon-600">
-                  <Activity className="h-3.5 w-3.5" />
-                  Today
-                </div>
-              </div>
-
-              <div className="mt-5 grid gap-4 xl:grid-cols-[1fr_1.05fr]">
-                <div className="rounded-[1.8rem] border border-slate-200/80 bg-gradient-to-b from-white to-neon-50/60 p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-sm text-[#66768c]">Calories remaining</p>
-                      <div className="mt-2 flex items-baseline gap-2">
-                        <span className="font-display text-4xl font-semibold tracking-tight text-[#102235]">418</span>
-                        <span className="text-sm font-semibold text-neon-600">kcal</span>
-                      </div>
-                    </div>
-
-                    <div className="relative h-24 w-24 shrink-0 rounded-full bg-[conic-gradient(from_180deg,rgba(47,111,237,0.96)0deg,rgba(124,92,255,0.92)220deg,rgba(219,234,254,0.72)220deg,rgba(219,234,254,0.72)360deg)] shadow-[0_0_40px_rgba(47,111,237,0.12)]">
-                      <div className="absolute inset-3 rounded-full border border-white/80 bg-white">
-                        <div className="flex h-full flex-col items-center justify-center text-center">
-                          <span className="text-[10px] uppercase tracking-[0.32em] text-[#66768c]">Daily</span>
-                          <span className="mt-1 font-display text-2xl font-semibold text-[#102235]">74%</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 space-y-3">
-                    {dashboardStats.map(([label, value, width]) => (
-                      <div key={label} className="rounded-2xl border border-white/80 bg-white/85 p-4">
-                        <div className="flex items-center justify-between gap-4">
-                          <p className="text-sm text-[#66768c]">{label}</p>
-                          <p className="font-display text-lg font-semibold text-[#102235]">{value}</p>
-                        </div>
-                        <div className="mt-3 h-2 rounded-full bg-slate-200/80">
-                          <div className={`h-2 rounded-full bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 ${width}`} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#151515] px-3 py-1 text-xs font-semibold text-white">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    Live
+                  </span>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="rounded-[1.8rem] border border-slate-200/80 bg-white p-5">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm text-[#66768c]">Today&apos;s feed</p>
-                        <h4 className="mt-1 font-display text-xl font-semibold tracking-tight text-[#102235]">
-                          Scan, confirm, and save
-                        </h4>
-                      </div>
+                <div className="mt-5 grid gap-4 lg:grid-cols-[0.98fr_1.02fr]">
+                  <div className="rounded-[1.8rem] border border-black/8 bg-gradient-to-b from-white to-[#fbfdf9] p-4">
+                    <div className="rounded-[1.6rem] border border-black/8 bg-white p-3">
+                      <img
+                        src="/calray-logo.jpeg"
+                        alt="CalRay logo"
+                        className="aspect-square w-full rounded-[1.25rem] object-contain"
+                      />
                     </div>
 
-                    <div className="mt-5 space-y-3">
-                      {previewFeed.map(({ icon: Icon, title, description, meta }) => (
-                        <div
-                          key={title}
-                          className="rounded-[1.4rem] border border-white/80 bg-gradient-to-r from-white to-neon-50/65 p-4"
-                        >
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex items-start gap-3">
-                              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-white shadow-glow">
-                                <Icon className="h-4.5 w-4.5" />
-                              </div>
-                              <div>
-                                <p className="font-display text-base font-semibold text-[#102235]">{title}</p>
-                                <p className="mt-1 text-sm leading-6 text-[#66768c]">{description}</p>
-                              </div>
-                            </div>
-                            <span className="rounded-full border border-neon-400/20 bg-neon-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-neon-600">
-                              {meta}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-4 rounded-[1.35rem] border border-neon-400/15 bg-neon-50/80 p-4">
-                      <div className="flex items-center gap-2 text-sm font-semibold text-[#102235]">
-                        <MonitorSmartphone className="h-4 w-4 text-neon-600" />
-                        AI coach summary
-                      </div>
-                      <p className="mt-2 text-sm leading-6 text-[#66768c]">
-                        Your steps are low today, so Calray suggests a lighter workout and an earlier protein meal.
+                    <div className="mt-4 rounded-[1.5rem] border border-black/8 bg-[#fcfbf8] p-4">
+                      <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">Logo lockup</p>
+                      <p className="mt-2 text-lg font-semibold text-[#151515]">
+                        Paper, ink, sky, leaf, sun, and orange.
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">
+                        The website uses the same colors from the app logo so the brand feels like one polished product.
                       </p>
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                    {[
-                      ["Meal logging", "Photo + barcode in one flow"],
-                      ["Favorites", "Repeat meals in one tap"],
-                    ].map(([title, description]) => (
-                      <div key={title} className="rounded-[1.5rem] border border-white/80 bg-white/85 p-4">
-                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#66768c]">
-                          <BadgeCheck className="h-3.5 w-3.5 text-neon-600" />
-                          {title}
+                  <div className="space-y-4">
+                    <div className="rounded-[1.8rem] border border-black/8 bg-white p-5">
+                      <p className="text-sm text-[#6b6f72]">Today&apos;s log</p>
+
+                      <div className="mt-4 flex items-end justify-between gap-4">
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">Calories remaining</p>
+                          <p className="mt-2 font-display text-4xl font-semibold text-[#151515]">418</p>
                         </div>
-                        <p className="mt-2 text-sm leading-6 text-[#102235]">{description}</p>
+
+                        <div className="rounded-[1.4rem] bg-[#151515] px-4 py-3 text-right text-white">
+                          <p className="text-[11px] uppercase tracking-[0.28em] opacity-70">Target</p>
+                          <p className="mt-1 font-display text-2xl font-semibold">2,100</p>
+                        </div>
                       </div>
-                    ))}
+
+                      <div className="mt-5 space-y-3">
+                        {dashboardMetrics.map((item) => (
+                          <div key={item.label} className="rounded-[1.35rem] border border-black/8 bg-[#fcfbf8] p-4">
+                            <div className="flex items-center justify-between gap-4">
+                              <p className="text-sm text-[#5d6468]">{item.label}</p>
+                              <p className="font-display text-lg font-semibold text-[#151515]">{item.value}</p>
+                            </div>
+                            <div className="mt-3 h-2 rounded-full bg-black/5">
+                              <div className={`h-2 rounded-full ${item.width}`} style={{ backgroundColor: item.fill }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-[1.5rem] border border-black/8 bg-[#eefafc] p-4">
+                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#0f6f85]">
+                          <ScanLine className="h-3.5 w-3.5" />
+                          Meal scan
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-[#151515]">Photo logging with a clean confirm step.</p>
+                      </div>
+
+                      <div className="rounded-[1.5rem] border border-black/8 bg-[#f8fbec] p-4">
+                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#3f7f10]">
+                          <Barcode className="h-3.5 w-3.5" />
+                          Barcode
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-[#151515]">Packaged foods log just as fast.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                {bottomTiles.map(([label, value]) => (
-                  <div key={label} className="rounded-2xl border border-white/80 bg-white/85 px-4 py-3">
-                    <p className="text-[11px] uppercase tracking-[0.28em] text-[#66768c]">{label}</p>
-                    <p className="mt-2 text-sm font-medium text-[#102235]">{value}</p>
-                  </div>
-                ))}
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {["Favorites", "Coach", "Workout"].map((item) => (
+                    <div key={item} className="rounded-2xl border border-black/8 bg-white/85 px-4 py-3">
+                      <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">{item}</p>
+                      <p className="mt-2 text-sm font-medium text-[#151515]">
+                        {item === "Favorites"
+                          ? "Repeat logging in one tap."
+                          : item === "Coach"
+                            ? "Next best action, every day."
+                            : "Training that fits your schedule."}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
+          </section>
 
-            <div className="grid gap-6">
-              <MockPhone
-                title="Meal logging"
-                subtitle="Log photo or barcode inputs fast enough to use every day."
-                icon={ScanLine}
-                progress={78}
-                chips={["Photo", "Barcode", "Favorites"]}
-              />
-              <MockPhone
-                title="Workout planner"
-                subtitle="Train with a split that adapts to recovery and time."
-                icon={Dumbbell}
-                progress={64}
-                chips={["Split", "Recovery", "Weekly"]}
-              />
+          <section id="product" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
+              <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
+                <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
+                Product
+              </p>
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
+                A premium interface for the entire nutrition loop.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
+                Paper-white surfaces, charcoal type, and accents from the logo keep CalRay calm, polished, and easy to
+                trust.
+              </p>
+            </motion.div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {productPillars.map((card, index) => {
+                const Icon = card.icon;
+
+                return (
+                  <motion.article
+                    key={card.title}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ delay: index * 0.08, ...spring }}
+                    className="rounded-[1.8rem] border border-black/10 bg-white/88 p-6 shadow-[0_24px_70px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                  >
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${card.tint} ${card.iconTone}`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-[#151515]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-[#5d6468]">{card.description}</p>
+                    <div className="mt-6 h-1.5 rounded-full bg-black/5">
+                      <div className="h-full w-full rounded-full bg-gradient-to-r from-[#8fd8f0] via-[#8dd94b] to-[#ffd84d]" />
+                    </div>
+                  </motion.article>
+                );
+              })}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="testimonials" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-          <SectionHeading
-            eyebrow="Testimonials"
-            title="The experience feels calm enough to become a habit."
-            description="A premium landing page should make the product feel trustworthy before the first sign-up click."
-            center
-          />
+          <section id="flow" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
+                <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
+                  <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
+                  Flow
+                </p>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
+                  Designed to feel like the app disappears.
+                </h2>
+                <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
+                  The experience stays calm from the first scan to the final workout suggestion. It is the kind of
+                  product flow that makes a new brand feel real the first time someone opens it.
+                </p>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((item, index) => (
-              <motion.article
-                key={item.name}
+                <ul className="mt-8 space-y-3">
+                  {[
+                    "Photo scans and barcode lookup stay in the same calm flow.",
+                    "Favorites and custom foods keep repeat meals one tap away.",
+                    "Workout guidance adapts to steps, recovery, and time.",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#3f7f10]" />
+                      <span className="text-sm leading-7 text-[#5d6468] sm:text-base">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  {brandHighlights.map((item) => (
+                    <div key={item.label} className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#6b6f72]">{item.label}</p>
+                      <p className="mt-2 font-display text-lg font-semibold text-[#151515]">{item.value}</p>
+                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <div className="space-y-4">
+                {flowSteps.map((step, index) => (
+                  <motion.article
+                    key={step.number}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ delay: index * 0.08, ...spring }}
+                    className="rounded-[1.65rem] border border-black/10 bg-white/90 p-5 shadow-[0_22px_60px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#151515] text-sm font-semibold text-white">
+                        {step.number}
+                      </div>
+                      <div>
+                        <p className="font-display text-xl font-semibold tracking-tight text-[#151515]">{step.title}</p>
+                        <p className="mt-2 text-sm leading-7 text-[#5d6468] sm:text-base">{step.description}</p>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="brand" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <div className="grid gap-12 lg:grid-cols-[0.94fr_1.06fr]">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
+                <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
+                  <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
+                  Brand system
+                </p>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
+                  The logo colors become the interface language.
+                </h2>
+                <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
+                  We pulled the UI from the same paper, charcoal, sky, leaf, sun, and orange palette in the app logo
+                  so the website feels like one product family.
+                </p>
+
+                <div className="mt-8 grid gap-4">
+                  {brandHighlights.map((item) => (
+                    <div key={item.label} className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#6b6f72]">{item.label}</p>
+                      <p className="mt-2 font-display text-lg font-semibold text-[#151515]">{item.value}</p>
+                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
-                transition={{ delay: index * 0.08, ...spring }}
-                className="rounded-[1.75rem] border border-white/80 bg-white/85 p-6 shadow-panel backdrop-blur-xl"
+                className="rounded-[2rem] border border-black/10 bg-white/90 p-6 shadow-[0_24px_80px_rgba(18,18,18,0.08)] backdrop-blur-xl"
               >
-                <div className="flex items-center gap-1 text-neon-600">
-                  {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star key={starIndex} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-
-                <MessageSquareQuote className="mt-5 h-6 w-6 text-neon-400/80" />
-                <p className="mt-4 text-base leading-8 text-[#66768c]">"{item.quote}"</p>
-
-                <div className="mt-6 flex items-center gap-4 border-t border-slate-200/80 pt-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500/15 to-white text-sm font-semibold text-neon-600">
-                    {item.name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .slice(0, 2)
-                      .join("")}
+                <div className="grid gap-4 md:grid-cols-[1.08fr_0.92fr]">
+                  <div className="rounded-[1.8rem] border border-black/8 bg-[#fcfbf8] p-4">
+                    <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-white p-3">
+                      <img
+                        src="/calray-logo.jpeg"
+                        alt="CalRay logo"
+                        className="aspect-square w-full rounded-[1.25rem] object-contain"
+                      />
+                    </div>
+                    <p className="mt-4 text-sm leading-7 text-[#5d6468]">
+                      The mark stays bold and readable because the website borrows the same black frames, white base,
+                      and bright food colors.
+                    </p>
                   </div>
-                  <div>
-                    <p className="font-display text-base font-semibold text-[#102235]">{item.name}</p>
-                    <p className="text-sm text-[#66768c]">{item.role}</p>
+
+                  <div className="space-y-3">
+                    {palette.map((swatch) => (
+                      <div
+                        key={swatch.label}
+                        className="flex items-center gap-3 rounded-[1.35rem] border border-black/8 bg-white p-3"
+                      >
+                        <span
+                          className="h-12 w-12 rounded-2xl border border-black/8 shadow-inner"
+                          style={{ backgroundColor: swatch.color }}
+                        />
+                        <div className="flex-1">
+                          <p className="font-display text-base font-semibold text-[#151515]">{swatch.label}</p>
+                          <p className="text-xs uppercase tracking-[0.24em] text-[#6b6f72]">{swatch.value}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </motion.article>
-            ))}
-          </div>
-        </section>
-      </main>
+              </motion.div>
+            </div>
+          </section>
 
-      <footer className="px-6 pb-10 lg:px-8">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 rounded-[2rem] border border-white/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(238,244,255,0.86),rgba(245,248,244,0.92))] p-6 shadow-panel backdrop-blur-xl md:flex-row md:items-center lg:px-8 lg:py-7">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-600/80">Calray AI by Hitesh Kasalya</p>
-            <h2 id="cta" className="mt-3 font-display text-2xl font-semibold tracking-tight text-[#102235] sm:text-3xl">
-              Start your fitness journey with AI
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#66768c] sm:text-base">
-              A minimalist, premium landing page for Calray AI by Hitesh Kasalya that mirrors the app&apos;s color
-              system and turns calorie detection into a polished startup story.
-            </p>
-          </div>
+          <section id="faq" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
+              <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
+                <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
+                FAQ
+              </p>
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
+                Questions people ask when they discover CalRay.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
+                Clear answers also help Google understand the product, the brand, and the founder behind it.
+              </p>
+            </motion.div>
 
-          <a
-            href="#home"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5"
-          >
-            Get Started
-            <ArrowRight className="h-4.5 w-4.5" />
-          </a>
-        </div>
-      </footer>
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {faqItems.map((item, index) => (
+                <motion.article
+                  key={item.question}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ delay: index * 0.08, ...spring }}
+                  className="rounded-[1.75rem] border border-black/10 bg-white/90 p-6 shadow-[0_22px_70px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6b6f72]">Answer</p>
+                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#151515]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[#5d6468] sm:text-base">{item.answer}</p>
+                </motion.article>
+              ))}
+            </div>
+          </section>
+        </main>
+
+        <footer className="px-6 pb-10 lg:px-8">
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 rounded-[2rem] border border-black/10 bg-white/90 p-6 shadow-[0_24px_80px_rgba(18,18,18,0.08)] backdrop-blur-xl md:flex-row md:items-center lg:px-8 lg:py-7">
+            <BrandMark size={56} label="CalRay" subtitle="AI calorie and fitness tracker coach" />
+
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">Created by Hitesh Kasalya</p>
+              <h2 id="cta" className="mt-3 font-display text-2xl font-semibold tracking-tight text-[#151515] sm:text-3xl">
+                Bring the same premium feel into the app.
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-[#5d6468] sm:text-base">
+                CalRay now looks and feels like a real startup brand: clean, high contrast, and built around the logo
+                colors from the app.
+              </p>
+            </div>
+
+            <a
+              href="#home"
+              className="inline-flex items-center gap-2 rounded-full bg-[#151515] px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5"
+            >
+              Get started
+              <ArrowRight className="h-4.5 w-4.5" />
+            </a>
+          </div>
+        </footer>
       </div>
     </>
   );

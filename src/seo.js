@@ -1,41 +1,52 @@
-export const siteTitle = "Calray AI by Hitesh Kasalya | AI Calorie Tracker & Fitness Coach";
+export const brandName = "CalRay";
+
+export const siteTitle = "CalRay: AI calorie and fitness tracker coach";
 
 export const siteDescription =
-  "Official Calray AI website by Hitesh Kasalya. Calray is an AI calorie tracker and fitness coach for meal scans, barcode lookup, favorites, custom foods, and workout planning.";
+  "Official CalRay website by Hitesh Kasalya. CalRay is an AI calorie and fitness tracker coach for meal scans, barcode lookup, favorites, custom foods, and workout planning.";
 
 export const siteKeywords =
-  "Calray, Calray AI, Hitesh Kasalya, AI calorie tracker, fitness coach, meal scan, barcode lookup, custom foods, workout planning";
+  "CalRay, Calray, Calray AI, Hitesh Kasalya, AI calorie tracker, fitness tracker coach, meal scan, barcode lookup, custom foods, workout planning";
 
 export const brandHighlights = [
   {
     label: "Brand",
-    value: "Calray",
-    description: "The short brand name people can remember and search quickly.",
-  },
-  {
-    label: "Full name",
-    value: "Calray AI",
-    description: "The official product name for the AI calorie tracker and fitness coach.",
+    value: "CalRay",
+    description: "The product name that keeps the app easy to remember and search.",
   },
   {
     label: "Founder",
     value: "Hitesh Kasalya",
-    description: "The creator behind the Calray AI experience and product direction.",
+    description: "The creator behind CalRay and the product direction.",
+  },
+  {
+    label: "Focus",
+    value: "Meals + fitness",
+    description: "A single premium experience for logging food and guiding the next workout.",
   },
 ];
 
 export const faqItems = [
   {
-    question: "What is Calray AI?",
+    question: "What is CalRay?",
     answer:
-      "Calray AI is the official calorie tracking and fitness coaching website created by Hitesh Kasalya.",
+      "CalRay is an AI calorie and fitness tracker coach built to keep meal logging, barcode scans, and workout guidance in one calm flow.",
   },
   {
-    question: "Is Calray the same as Calray AI?",
-    answer: "Yes. Calray is the short brand name, and Calray AI is the full product name.",
+    question: "Who built CalRay?",
+    answer: "Hitesh Kasalya built CalRay and shaped the product around real daily nutrition and training use.",
   },
   {
-    question: "Who built Calray?",
-    answer: "Hitesh Kasalya built Calray and shaped it around meal scans, barcode lookup, and fitness coaching.",
+    question: "What does CalRay track?",
+    answer: "CalRay tracks meals, calories, macros, favorites, custom foods, and workout suggestions.",
   },
+];
+
+export const palette = [
+  { label: "Paper", value: "#fcfbf8", color: "#fcfbf8" },
+  { label: "Ink", value: "#151515", color: "#151515" },
+  { label: "Sky", value: "#8fd8f0", color: "#8fd8f0" },
+  { label: "Leaf", value: "#8dd94b", color: "#8dd94b" },
+  { label: "Sun", value: "#ffd84d", color: "#ffd84d" },
+  { label: "Orange", value: "#f89b4c", color: "#f89b4c" },
 ];

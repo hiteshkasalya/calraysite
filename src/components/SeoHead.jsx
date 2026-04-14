@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { faqItems, siteDescription, siteKeywords, siteTitle } from "../seo";
+import { brandName, faqItems, siteDescription, siteKeywords, siteTitle } from "../seo";
 
 function upsertMeta(selector, attributes) {
   let element = document.querySelector(selector);
@@ -77,7 +77,7 @@ export default function SeoHead() {
     });
     upsertMeta('meta[property="og:site_name"]', {
       property: "og:site_name",
-      content: "Calray AI",
+      content: brandName,
     });
     upsertMeta('meta[property="og:url"]', {
       property: "og:url",
@@ -120,8 +120,8 @@ export default function SeoHead() {
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Calray AI",
-    alternateName: "Calray",
+    name: brandName,
+    alternateName: "Calray AI",
     url: currentUrl || "/",
     description: siteDescription,
     publisher: {
@@ -133,8 +133,8 @@ export default function SeoHead() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Calray AI",
-    alternateName: "Calray",
+    name: brandName,
+    alternateName: "Calray AI",
     url: currentUrl || "/",
     description: siteDescription,
     founder: {
@@ -150,7 +150,7 @@ export default function SeoHead() {
     jobTitle: "Founder",
     worksFor: {
       "@type": "Organization",
-      name: "Calray AI",
+      name: brandName,
     },
     url: currentUrl || "/",
   };
@@ -158,8 +158,8 @@ export default function SeoHead() {
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Calray AI",
-    alternateName: "Calray",
+    name: brandName,
+    alternateName: "Calray AI",
     applicationCategory: "HealthApplication",
     operatingSystem: "Web",
     url: currentUrl || "/",
@@ -170,7 +170,7 @@ export default function SeoHead() {
     },
     publisher: {
       "@type": "Organization",
-      name: "Calray AI",
+      name: brandName,
     },
   };
 

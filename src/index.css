@@ -16,13 +16,14 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: "Manrope", sans-serif;
-  color: #102235;
+  color: #151515;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 14% 14%, rgba(47, 111, 237, 0.16), transparent 26%),
-    radial-gradient(circle at 84% 12%, rgba(124, 92, 255, 0.12), transparent 22%),
-    radial-gradient(circle at 72% 82%, rgba(15, 159, 110, 0.08), transparent 22%),
-    linear-gradient(180deg, #f8fbff 0%, #eef4ff 42%, #f5f8f4 100%);
+    radial-gradient(circle at 12% 14%, rgba(143, 216, 240, 0.18), transparent 24%),
+    radial-gradient(circle at 86% 10%, rgba(141, 217, 75, 0.16), transparent 22%),
+    radial-gradient(circle at 70% 82%, rgba(255, 223, 82, 0.14), transparent 24%),
+    radial-gradient(circle at 20% 82%, rgba(248, 161, 76, 0.08), transparent 20%),
+    linear-gradient(180deg, #fefdfb 0%, #f7f7f3 44%, #fcfbf8 100%);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -37,11 +38,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
-  background-size: 76px 76px;
+    linear-gradient(rgba(21, 21, 21, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 21, 21, 0.04) 1px, transparent 1px);
+  background-size: 84px 84px;
   mask-image: radial-gradient(circle at center, black 28%, transparent 82%);
-  opacity: 0.2;
+  opacity: 0.18;
 }
 
 body::after {
@@ -49,10 +50,10 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at center, transparent 0%, transparent 58%, rgba(245, 248, 244, 0.38) 100%);
+  background: radial-gradient(circle at center, transparent 0%, transparent 62%, rgba(252, 251, 248, 0.42) 100%);
 }
 
 ::selection {
-  background: rgba(47, 111, 237, 0.24);
-  color: #102235;
+  background: rgba(141, 217, 75, 0.25);
+  color: #151515;
 }
