@@ -39,7 +39,7 @@ function App() {
       <header className="sticky top-0 z-50 border-b border-white/5 bg-black/65 backdrop-blur-2xl">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
           <a href="#home" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neon-400/20 bg-neon-400/10 text-sm font-semibold text-neon-300 shadow-[0_0_30px_rgba(99,255,148,0.16)]">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-neon-400/20 bg-neon-400/10 text-sm font-semibold text-neon-300 shadow-[0_0_30px_rgba(124,92,255,0.16)]">
               C
             </span>
             <div>
@@ -51,6 +51,9 @@ function App() {
           <nav className="hidden items-center gap-8 text-sm text-white/65 md:flex">
             <a className="transition hover:text-white" href="#features">
               Features
+            </a>
+            <a className="transition hover:text-white" href="#about">
+              About
             </a>
             <a className="transition hover:text-white" href="#motion">
               Motion
@@ -65,7 +68,7 @@ function App() {
 
           <a
             href="#cta"
-            className="inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-neon-400/10 px-4 py-2 text-sm font-semibold text-neon-300 shadow-[0_0_28px_rgba(99,255,148,0.1)] transition hover:-translate-y-0.5 hover:border-neon-400/35 hover:bg-neon-400/15"
+            className="inline-flex items-center gap-2 rounded-full border border-neon-400/20 bg-neon-400/10 px-4 py-2 text-sm font-semibold text-neon-300 shadow-[0_0_28px_rgba(47,111,237,0.12)] transition hover:-translate-y-0.5 hover:border-neon-400/35 hover:bg-neon-400/15"
           >
             Get Started
             <ArrowRight className="h-4 w-4" />
@@ -94,7 +97,7 @@ function App() {
                 <a
                   id="cta"
                   href="#preview"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 px-6 font-semibold text-black shadow-[0_18px_60px_rgba(99,255,148,0.22)] transition hover:-translate-y-0.5"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon-500 via-neon-400 to-neon-300 px-6 font-semibold text-black shadow-[0_18px_60px_rgba(47,111,237,0.22)] transition hover:-translate-y-0.5"
                 >
                   Get Started
                   <ArrowRight className="h-4.5 w-4.5" />
@@ -136,6 +139,57 @@ function App() {
             {featureCards.map((card, index) => (
               <FeatureCard key={card.title} index={index} {...card} />
             ))}
+          </div>
+        </section>
+
+        <section id="about" className="relative mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+          <SectionHeading
+            eyebrow="About us"
+            title="Built with the same color language as the app."
+            description="The website now mirrors CalAI's blue, purple, and soft lilac palette so the brand feels consistent from product to landing page."
+          />
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 shadow-panel backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-300">Our mission</p>
+              <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                One app for calories, training, and recovery.
+              </h3>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+                Calray was designed to remove the friction between eating well and training consistently. The web
+                experience follows the app&apos;s visual system, keeping the product calm, premium, and easy to trust.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                {[
+                  ["Palette", "Blue + purple"],
+                  ["Experience", "Apple-like clarity"],
+                  ["Focus", "Daily consistency"],
+                ].map(([label, value]) => (
+                  <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                    <p className="text-[11px] uppercase tracking-[0.24em] text-white/40">{label}</p>
+                    <p className="mt-2 font-semibold text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-[2rem] border border-neon-400/20 bg-gradient-to-br from-neon-400/10 via-white/[0.03] to-neon-300/10 p-7 shadow-panel backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-neon-300">Founder note</p>
+              <blockquote className="mt-4 text-lg leading-8 text-white/80 sm:text-xl">
+                "We built Calray so calorie tracking and fitness coaching would feel as simple as opening your
+                phone. The website should feel like the product: clear, premium, and focused on real daily progress."
+              </blockquote>
+              <div className="mt-8 flex items-center gap-4 border-t border-white/10 pt-5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-500 via-neon-400 to-neon-300 text-sm font-semibold text-black">
+                  C
+                </div>
+                <div>
+                  <p className="font-display text-base font-semibold text-white">Founder, Calray</p>
+                  <p className="text-sm text-white/50">App-first product vision</p>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 

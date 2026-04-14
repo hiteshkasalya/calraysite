@@ -48,7 +48,7 @@ export default function HeroPreview() {
                 className="relative h-28 w-28 rounded-full"
                 style={{
                   background:
-                    "conic-gradient(rgb(99, 255, 148) 0 74%, rgba(255,255,255,0.08) 74% 100%)",
+                    "conic-gradient(rgb(47, 111, 237) 0 74%, rgba(255,255,255,0.08) 74% 100%)",
                 }}
               >
                 <div className="absolute inset-3 rounded-full bg-zinc-950">

@@ -9,17 +9,20 @@ export default {
       },
       colors: {
         neon: {
-          50: "#effff4",
-          100: "#d8ffe7",
-          200: "#b7ffd0",
-          300: "#8effb2",
-          400: "#63ff94",
-          500: "#2bff77",
-          600: "#13d95e",
+          50: "#f8fbff",
+          100: "#eef4ff",
+          200: "#dbeafe",
+          300: "#c4b5fd",
+          400: "#7c5cff",
+          500: "#2f6fed",
+          600: "#1d4ed8",
+          700: "#1e3a8a",
+          800: "#111827",
+          900: "#102235",
         },
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(99, 255, 148, 0.18), 0 24px 80px rgba(0, 255, 122, 0.12)",
+        glow: "0 0 0 1px rgba(47, 111, 237, 0.18), 0 24px 80px rgba(47, 111, 237, 0.12)",
         panel: "0 18px 60px rgba(0, 0, 0, 0.45)",
       },
       keyframes: {
