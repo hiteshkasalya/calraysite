@@ -1,144 +1,294 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
+  Activity,
   ArrowRight,
   BadgeCheck,
   Barcode,
   ChevronRight,
   Dumbbell,
+  Globe,
+  Languages,
+  Layers,
   ScanLine,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import BrandMark from "./components/BrandMark";
 import SeoHead from "./components/SeoHead";
-import { brandHighlights, faqItems, palette } from "./seo";
+import { brandHighlights, faqItems, languageShowcase, palette } from "./seo";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const spring = {
   type: "spring",
-  stiffness: 120,
+  stiffness: 110,
   damping: 18,
 };
 
-const heroSignals = [
+const heroMetrics = [
   {
-    title: "Meal scan",
-    text: "Photo + barcode",
-    tone: "#8fd8f0",
+    value: "6",
+    label: "language touchpoints",
+    detail: "English, हिंदी, Español, العربية, 日本語, Français",
   },
   {
-    title: "Favorites",
-    text: "One-tap repeats",
-    tone: "#8dd94b",
+    value: "3D",
+    label: "spatial depth",
+    detail: "Floating glass layers and orbital motion",
   },
   {
-    title: "Coach",
-    text: "Adaptive prompts",
-    tone: "#ffd84d",
+    value: "1",
+    label: "calm flow",
+    detail: "Scan, confirm, coach, repeat",
   },
 ];
 
-const productPillars = [
+const productCards = [
   {
     icon: ScanLine,
-    title: "Scan meals fast",
-    description: "Photo recognition and barcode lookup keep logging quick and calm.",
-    tint: "bg-[#e8f8fd]",
-    iconTone: "text-[#0f6f85]",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Save favorites",
-    description: "Repeat meals and custom foods stay one tap away in a clean flow.",
-    tint: "bg-[#eef9de]",
-    iconTone: "text-[#3f7f10]",
+    eyebrow: "Meal capture",
+    title: "Spatial scan that feels calm.",
+    description:
+      "Photo recognition and barcode lookup stay inside a glassy confirm step, so logging food feels deliberate instead of noisy.",
+    accent: "#0f6f85",
+    tint: "rgba(143, 216, 240, 0.18)",
   },
   {
     icon: Dumbbell,
-    title: "Coach training",
-    description: "Workout guidance adapts to steps, recovery, and the rest of the day.",
-    tint: "bg-[#fff4cd]",
-    iconTone: "text-[#9a7000]",
+    eyebrow: "Adaptive coach",
+    title: "Training that reacts to the day.",
+    description:
+      "Workout guidance shifts with steps, recovery, and your remaining energy, giving the interface a more intelligent pulse.",
+    accent: "#3f7f10",
+    tint: "rgba(141, 217, 75, 0.18)",
+  },
+  {
+    icon: Languages,
+    eyebrow: "Global language",
+    title: "Feels native across markets.",
+    description:
+      "English, हिंदी, Español, العربية, 日本語, and Français all appear in the design system, so the brand looks ready to travel.",
+    accent: "#9a7000",
+    tint: "rgba(255, 216, 77, 0.2)",
   },
 ];
 
-const flowSteps = [
-  {
-    number: "01",
-    title: "Capture",
-    description: "Take a meal photo or scan a barcode from any packaged food.",
-  },
-  {
-    number: "02",
-    title: "Confirm",
-    description: "Review calories and macros in a calm card before logging it.",
-  },
-  {
-    number: "03",
-    title: "Adjust",
-    description: "CalRay suggests the next meal or workout based on the day ahead.",
-  },
-];
+function SectionIntro({ eyebrow, title, description, center = false }) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}
+    >
+      <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6a7177]">
+        <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#111111] to-transparent" />
+        {eyebrow}
+      </p>
+      <h2 className="font-display text-3xl font-semibold tracking-tight text-[#111111] sm:text-4xl lg:text-5xl">
+        {title}
+      </h2>
+      {description ? <p className="mt-5 text-base leading-7 text-[#5b6268] sm:text-lg">{description}</p> : null}
+    </motion.div>
+  );
+}
 
-const dashboardMetrics = [
-  {
-    label: "Calories",
-    value: "1,842 / 2,100",
-    width: "w-[87%]",
-    fill: "#8fd8f0",
-  },
-  {
-    label: "Protein",
-    value: "137g",
-    width: "w-[78%]",
-    fill: "#8dd94b",
-  },
-  {
-    label: "Workout",
-    value: "Moderate",
-    width: "w-[64%]",
-    fill: "#ffd84d",
-  },
-];
+function SpatialStage({ reduceMotion }) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      animate="show"
+      transition={{ delay: 0.12, ...spring }}
+      className="relative"
+    >
+      <div className="absolute -inset-8 rounded-[3.4rem] bg-[radial-gradient(circle_at_20%_20%,rgba(143,216,240,0.24),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(141,217,75,0.18),transparent_24%),radial-gradient(circle_at_74%_84%,rgba(255,216,77,0.18),transparent_22%),radial-gradient(circle_at_24%_84%,rgba(248,155,76,0.14),transparent_22%)] blur-3xl" />
+      <div className="relative overflow-hidden rounded-[2.75rem] border border-black/8 bg-white/68 p-5 shadow-[0_36px_120px_rgba(17,17,17,0.12)] backdrop-blur-2xl">
+        <div className="flex items-center justify-between gap-4 border-b border-black/8 pb-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.34em] text-[#6a7177]">Spatial preview</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-[#111111]">
+              A 3D product stage with real depth
+            </h2>
+          </div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-[#111111] px-3 py-1 text-xs font-semibold text-white shadow-[0_16px_40px_rgba(17,17,17,0.16)]">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            Live
+          </span>
+        </div>
 
-const quickTags = ["Meal scan", "Barcode lookup", "Favorites", "Workout coach"];
+        <div
+          className="relative mt-5 min-h-[560px] overflow-hidden rounded-[2.25rem] border border-black/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(251,249,244,0.92))] p-4 sm:min-h-[620px]"
+          style={{ perspective: "1800px" }}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(143,216,240,0.18),transparent_28%),radial-gradient(circle_at_50%_74%,rgba(141,217,75,0.12),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.4),transparent_45%)]" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
+          <motion.div
+            aria-hidden="true"
+            animate={reduceMotion ? {} : { rotate: 360 }}
+            transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
+            className="absolute left-1/2 top-1/2 h-[20rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 bg-[conic-gradient(from_180deg,rgba(143,216,240,0.26),rgba(141,217,75,0.22),rgba(255,216,77,0.2),rgba(248,155,76,0.18),rgba(143,216,240,0.26))] opacity-80 shadow-[0_30px_100px_rgba(17,17,17,0.08)] sm:h-[28rem] sm:w-[28rem]"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="absolute inset-8 rounded-full border border-dashed border-black/10" />
+            <div className="absolute inset-16 rounded-full border border-white/85 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.98),rgba(255,255,255,0.55)_48%,rgba(143,216,240,0.15)_75%,transparent_100%)] shadow-inner" />
+          </motion.div>
+
+          <motion.div
+            animate={reduceMotion ? {} : { y: [0, -12, 0], rotate: [-6, -4, -6] }}
+            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-4 top-8 hidden w-56 rounded-[1.5rem] border border-black/8 bg-white/88 p-4 shadow-[0_22px_60px_rgba(17,17,17,0.08)] backdrop-blur-xl md:block"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">
+              <ScanLine className="h-3.5 w-3.5 text-[#0f6f85]" />
+              Meal scan
+            </div>
+            <p className="mt-2 text-sm leading-6 text-[#111111]">Photo + barcode in one calm surface.</p>
+          </motion.div>
+
+          <motion.div
+            animate={reduceMotion ? {} : { y: [0, -10, 0], rotate: [6, 4, 6] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute right-4 top-12 hidden w-56 rounded-[1.5rem] border border-black/8 bg-white/88 p-4 shadow-[0_22px_60px_rgba(17,17,17,0.08)] backdrop-blur-xl md:block"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">
+              <Barcode className="h-3.5 w-3.5 text-[#9a7000]" />
+              Barcode lookup
+            </div>
+            <p className="mt-2 text-sm leading-6 text-[#111111]">Packaged foods stay just as fast.</p>
+          </motion.div>
+
+          <motion.div
+            animate={reduceMotion ? {} : { y: [0, 12, 0], rotate: [-5, -3, -5] }}
+            transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-4 bottom-24 hidden w-56 rounded-[1.5rem] border border-black/8 bg-white/88 p-4 shadow-[0_22px_60px_rgba(17,17,17,0.08)] backdrop-blur-xl md:block"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">
+              <Dumbbell className="h-3.5 w-3.5 text-[#3f7f10]" />
+              Workout planner
+            </div>
+            <p className="mt-2 text-sm leading-6 text-[#111111]">Training adjusts to recovery and availability.</p>
+          </motion.div>
+
+          <motion.div
+            animate={reduceMotion ? {} : { y: [0, -8, 0], rotate: [5, 3, 5] }}
+            transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute right-4 bottom-24 hidden w-56 rounded-[1.5rem] border border-black/8 bg-white/88 p-4 shadow-[0_22px_60px_rgba(17,17,17,0.08)] backdrop-blur-xl md:block"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">
+              <Languages className="h-3.5 w-3.5 text-[#0f6f85]" />
+              Global language
+            </div>
+            <p className="mt-2 text-sm leading-6 text-[#111111]">English, हिंदी, Español, العربية, 日本語, Français.</p>
+          </motion.div>
+
+          <motion.div
+            animate={
+              reduceMotion
+                ? {}
+                : {
+                    rotateX: [10, 14, 10],
+                    rotateY: [-10, 10, -10],
+                    rotateZ: [0, 1.5, 0],
+                  }
+            }
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-1/2 top-1/2 z-20 flex h-[21rem] w-[21rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/90 bg-[radial-gradient(circle_at_30%_22%,rgba(255,255,255,0.98),rgba(252,251,247,0.9)_42%,rgba(143,216,240,0.18)_72%,rgba(248,155,76,0.1)_84%,transparent_100%)] shadow-[0_42px_120px_rgba(17,17,17,0.14)] sm:h-[26rem] sm:w-[26rem]"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="absolute inset-8 rounded-full border border-black/8" />
+            <div className="absolute inset-14 rounded-full border border-dashed border-black/10" />
+            <div className="absolute inset-20 rounded-full bg-[radial-gradient(circle_at_center,rgba(17,17,17,0.05),transparent_58%)] blur-sm" />
+            <div className="relative flex flex-col items-center text-center">
+              <div className="overflow-hidden rounded-[1.8rem] border border-black/10 bg-white p-3 shadow-[0_18px_50px_rgba(17,17,17,0.08)]">
+                <img
+                  src="/calray-logo.jpeg?v=20260415"
+                  alt="CalRay logo"
+                  className="aspect-square w-36 rounded-[1.25rem] object-contain sm:w-40"
+                />
+              </div>
+              <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.38em] text-[#6a7177]">CalRay AI</p>
+              <h3 className="mt-2 font-display text-2xl font-semibold text-[#111111] sm:text-3xl">
+                Nutrition that moves
+              </h3>
+              <p className="mt-3 max-w-[240px] text-sm leading-6 text-[#5b6268]">
+                Meals, workouts, and language feel connected in one sculpted interface.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="absolute inset-x-4 bottom-4 hidden gap-3 sm:grid sm:grid-cols-3">
+            {[
+              { icon: Activity, label: "Motion", value: "Subtle 3D drift" },
+              { icon: BadgeCheck, label: "Flow", value: "One calm confirm step" },
+              { icon: Globe, label: "Reach", value: "English + global scripts" },
+            ].map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-black/8 bg-white/84 px-4 py-3 shadow-[0_14px_40px_rgba(17,17,17,0.05)] backdrop-blur-xl"
+                >
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">
+                    <Icon className="h-3.5 w-3.5 text-[#0f6f85]" />
+                    {item.label}
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-[#111111]">{item.value}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 function App() {
+  const reduceMotion = useReducedMotion();
+  const ribbonItems = reduceMotion ? languageShowcase : [...languageShowcase, ...languageShowcase];
+
   return (
     <>
       <SeoHead />
-      <div className="relative min-h-screen overflow-x-hidden bg-[#fcfbf8] text-[#151515]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(143,216,240,0.18),transparent_24%),radial-gradient(circle_at_86%_10%,rgba(141,217,75,0.16),transparent_22%),radial-gradient(circle_at_70%_82%,rgba(255,223,82,0.14),transparent_24%),radial-gradient(circle_at_20%_82%,rgba(248,161,76,0.09),transparent_20%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.14))]" />
+      <div className="relative min-h-screen overflow-x-hidden bg-[#fbf9f4] text-[#111111]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(143,216,240,0.22),transparent_18%),radial-gradient(circle_at_84%_14%,rgba(141,217,75,0.18),transparent_18%),radial-gradient(circle_at_74%_80%,rgba(255,216,77,0.16),transparent_22%),radial-gradient(circle_at_16%_82%,rgba(248,155,76,0.12),transparent_20%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.52),rgba(255,255,255,0.1))]" />
 
-        <header className="sticky top-0 z-50 border-b border-black/8 bg-white/78 backdrop-blur-2xl">
+        <header className="sticky top-0 z-50 border-b border-black/8 bg-white/60 backdrop-blur-3xl">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
             <a href="#home" className="flex items-center gap-3">
-              <BrandMark size={56} label="CalRay" subtitle="AI calorie and fitness tracker coach" />
+              <BrandMark size={52} label="CalRay" subtitle="Spatial AI calorie and fitness tracker coach" />
             </a>
 
-            <nav className="hidden items-center gap-8 text-sm font-medium text-[#5d6468] md:flex">
-              <a className="transition hover:text-[#151515]" href="#product">
+            <nav className="hidden items-center gap-8 text-sm font-medium text-[#596067] md:flex">
+              <a className="transition hover:text-[#111111]" href="#product">
                 Product
               </a>
-              <a className="transition hover:text-[#151515]" href="#flow">
-                Flow
+              <a className="transition hover:text-[#111111]" href="#global">
+                Global
               </a>
-              <a className="transition hover:text-[#151515]" href="#brand">
+              <a className="transition hover:text-[#111111]" href="#brand">
                 Brand
               </a>
-              <a className="transition hover:text-[#151515]" href="#faq">
+              <a className="transition hover:text-[#111111]" href="#faq">
                 FAQ
               </a>
             </nav>
 
             <a
               href="#cta"
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#151515] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(18,18,18,0.12)] transition hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#111111] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(17,17,17,0.12)] transition hover:-translate-y-0.5"
             >
               Request demo
               <ArrowRight className="h-4 w-4" />
@@ -147,200 +297,119 @@ function App() {
         </header>
 
         <main id="home">
-          <section className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-24">
+          <section className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:px-8 lg:py-24">
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="max-w-3xl rounded-[2.25rem] border border-black/10 bg-white/90 p-5 shadow-[0_24px_70px_rgba(18,18,18,0.08)] backdrop-blur-xl lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+              className="relative overflow-hidden rounded-[2.6rem] border border-black/8 bg-white/72 p-6 shadow-[0_36px_110px_rgba(17,17,17,0.1)] backdrop-blur-2xl sm:p-8"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d6468] shadow-[0_14px_40px_rgba(18,18,18,0.05)]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/78 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d6468] shadow-[0_14px_40px_rgba(17,17,17,0.05)]">
                 <Sparkles className="h-3.5 w-3.5 text-[#0f6f85]" />
                 Built from the logo palette
               </div>
 
-              <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-[#151515] sm:text-7xl lg:text-[6rem] lg:leading-[0.92]">
-                CalRay
-                <span className="mt-4 block text-2xl font-medium tracking-tight text-[#5d6468] sm:text-3xl">
-                  AI calorie and fitness tracker coach
+              <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-[#111111] sm:text-7xl lg:text-[6.4rem] lg:leading-[0.9]">
+                Premium nutrition, sculpted in 3D.
+                <span className="mt-4 block text-2xl font-medium leading-9 tracking-tight text-[#5b6268] sm:text-3xl">
+                  CalRay feels like a luxury product home, not a static landing page.
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-[#5d6468] sm:text-lg">
-                Official site of CalRay by Hitesh Kasalya. A clean, premium home for meal scans, barcode lookup,
-                favorites, custom foods, and adaptive workout guidance.
+              <p className="mt-6 max-w-2xl text-base leading-8 text-[#5b6268] sm:text-lg">
+                CalRay by Hitesh Kasalya brings meal scans, barcode lookup, favorites, custom foods, and coaching into
+                a layered, high-contrast home built to look global from the first scroll.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
                   href="#product"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#151515] px-6 font-semibold text-white shadow-[0_18px_50px_rgba(18,18,18,0.12)] transition hover:-translate-y-0.5"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#111111] px-6 font-semibold text-white shadow-[0_18px_50px_rgba(17,17,17,0.14)] transition hover:-translate-y-0.5"
                 >
-                  Explore product
+                  Explore the system
                   <ArrowRight className="h-4.5 w-4.5" />
                 </a>
                 <a
-                  href="#brand"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/85 px-6 font-semibold text-[#151515] shadow-[0_16px_40px_rgba(18,18,18,0.06)] transition hover:border-black/20 hover:bg-white"
+                  href="#global"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/88 px-6 font-semibold text-[#111111] shadow-[0_16px_40px_rgba(17,17,17,0.06)] transition hover:border-black/20 hover:bg-white"
                 >
-                  View brand system
+                  See global edition
                   <ChevronRight className="h-4.5 w-4.5" />
                 </a>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {quickTags.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#6b6f72] sm:text-[11px]"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/74 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7177]">
+                  <Layers className="h-3.5 w-3.5 text-[#9a7000]" />
+                  Layered depth
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/74 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7177]">
+                  <Activity className="h-3.5 w-3.5 text-[#0f6f85]" />
+                  Living motion
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/74 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7177]">
+                  <BadgeCheck className="h-3.5 w-3.5 text-[#3f7f10]" />
+                  Premium polish
+                </span>
               </div>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {heroSignals.map((card) => (
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {heroMetrics.map((item) => (
                   <div
-                    key={card.title}
-                    className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4 shadow-[0_18px_50px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                    key={item.label}
+                    className="rounded-[1.5rem] border border-black/8 bg-white/82 p-4 shadow-[0_18px_40px_rgba(17,17,17,0.05)]"
                   >
-                    <div className="h-2 w-10 rounded-full" style={{ backgroundColor: card.tone }} />
-                    <p className="mt-4 font-display text-xl font-semibold text-[#151515]">{card.title}</p>
-                    <p className="mt-1 text-sm text-[#5d6468]">{card.text}</p>
+                    <p className="text-[11px] uppercase tracking-[0.28em] text-[#6a7177]">{item.label}</p>
+                    <p className="mt-2 font-display text-2xl font-semibold text-[#111111]">{item.value}</p>
+                    <p className="mt-2 text-sm leading-6 text-[#5b6268]">{item.detail}</p>
                   </div>
                 ))}
               </div>
-            </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              transition={{ delay: 0.12, ...spring }}
-              className="relative"
-            >
-              <div className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(circle_at_20%_20%,rgba(143,216,240,0.24),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(141,217,75,0.20),transparent_24%),radial-gradient(circle_at_78%_84%,rgba(255,223,82,0.18),transparent_22%)] blur-3xl" />
-
-              <div className="relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-white/86 p-5 shadow-[0_32px_100px_rgba(18,18,18,0.10)] backdrop-blur-xl">
-                <div className="flex items-center justify-between border-b border-black/8 pb-4">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.34em] text-[#6b6f72]">App preview</p>
-                    <h2 className="mt-2 font-display text-2xl font-semibold text-[#151515]">Meal to movement</h2>
-                  </div>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#151515] px-3 py-1 text-xs font-semibold text-white">
-                    <ShieldCheck className="h-3.5 w-3.5" />
-                    Live
-                  </span>
+              <div className="mt-8 rounded-[2rem] border border-black/8 bg-white/74 p-4 shadow-[0_18px_50px_rgba(17,17,17,0.06)] backdrop-blur-2xl">
+                <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#6a7177]">
+                  <Languages className="h-3.5 w-3.5 text-[#0f6f85]" />
+                  Global language ribbon
                 </div>
 
-                <div className="mt-5 grid gap-4 lg:grid-cols-[0.98fr_1.02fr]">
-                  <div className="rounded-[1.8rem] border border-black/8 bg-gradient-to-b from-white to-[#fbfdf9] p-4">
-                    <div className="rounded-[1.6rem] border border-black/8 bg-white p-3">
-                      <img
-                        src="/calray-logo.jpeg?v=20260415"
-                        alt="CalRay logo"
-                        className="aspect-square w-full rounded-[1.25rem] object-contain"
-                      />
-                    </div>
-
-                    <div className="mt-4 rounded-[1.5rem] border border-black/8 bg-[#fcfbf8] p-4">
-                      <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">Logo lockup</p>
-                      <p className="mt-2 text-lg font-semibold text-[#151515]">
-                        Paper, ink, sky, leaf, sun, and orange.
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">
-                        The website uses the same colors from the app logo so the brand feels like one polished product.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="rounded-[1.8rem] border border-black/8 bg-white p-5">
-                      <p className="text-sm text-[#6b6f72]">Today&apos;s log</p>
-
-                      <div className="mt-4 flex items-end justify-between gap-4">
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">Calories remaining</p>
-                          <p className="mt-2 font-display text-4xl font-semibold text-[#151515]">418</p>
+                <div className="mt-4 overflow-hidden">
+                  <motion.div
+                    animate={reduceMotion ? {} : { x: ["0%", "-50%"] }}
+                    transition={reduceMotion ? undefined : { duration: 28, repeat: Infinity, ease: "linear" }}
+                    className={reduceMotion ? "flex flex-wrap gap-3" : "flex w-max gap-3"}
+                  >
+                    {ribbonItems.map((item, index) => (
+                      <div
+                        key={`${item.language}-${index}`}
+                        dir={item.dir || "ltr"}
+                        className="min-w-[170px] rounded-[1.25rem] border border-black/8 bg-white/82 px-4 py-3 shadow-[0_14px_40px_rgba(17,17,17,0.05)]"
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="text-[10px] uppercase tracking-[0.28em] text-[#6a7177]">{item.language}</p>
+                          <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
                         </div>
-
-                        <div className="rounded-[1.4rem] bg-[#151515] px-4 py-3 text-right text-white">
-                          <p className="text-[11px] uppercase tracking-[0.28em] opacity-70">Target</p>
-                          <p className="mt-1 font-display text-2xl font-semibold">2,100</p>
-                        </div>
+                        <p className={`mt-3 text-sm font-semibold text-[#111111] ${item.dir === "rtl" ? "text-right" : ""}`}>
+                          {item.sample}
+                        </p>
                       </div>
-
-                      <div className="mt-5 space-y-3">
-                        {dashboardMetrics.map((item) => (
-                          <div key={item.label} className="rounded-[1.35rem] border border-black/8 bg-[#fcfbf8] p-4">
-                            <div className="flex items-center justify-between gap-4">
-                              <p className="text-sm text-[#5d6468]">{item.label}</p>
-                              <p className="font-display text-lg font-semibold text-[#151515]">{item.value}</p>
-                            </div>
-                            <div className="mt-3 h-2 rounded-full bg-black/5">
-                              <div className={`h-2 rounded-full ${item.width}`} style={{ backgroundColor: item.fill }} />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="rounded-[1.5rem] border border-black/8 bg-[#eefafc] p-4">
-                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#0f6f85]">
-                          <ScanLine className="h-3.5 w-3.5" />
-                          Meal scan
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-[#151515]">Photo logging with a clean confirm step.</p>
-                      </div>
-
-                      <div className="rounded-[1.5rem] border border-black/8 bg-[#f8fbec] p-4">
-                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#3f7f10]">
-                          <Barcode className="h-3.5 w-3.5" />
-                          Barcode
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-[#151515]">Packaged foods log just as fast.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {["Favorites", "Coach", "Workout"].map((item) => (
-                    <div key={item} className="rounded-2xl border border-black/8 bg-white/85 px-4 py-3">
-                      <p className="text-[11px] uppercase tracking-[0.28em] text-[#6b6f72]">{item}</p>
-                      <p className="mt-2 text-sm font-medium text-[#151515]">
-                        {item === "Favorites"
-                          ? "Repeat logging in one tap."
-                          : item === "Coach"
-                            ? "Next best action, every day."
-                            : "Training that fits your schedule."}
-                      </p>
-                    </div>
-                  ))}
+                    ))}
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
+
+            <SpatialStage reduceMotion={reduceMotion} />
           </section>
 
           <section id="product" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
-              <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
-                <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
-                Product
-              </p>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
-                A premium interface for the entire nutrition loop.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
-                Paper-white surfaces, charcoal type, and accents from the logo keep CalRay calm, polished, and easy to
-                trust.
-              </p>
-            </motion.div>
+            <SectionIntro
+              eyebrow="Product"
+              title="A premium interface built in layers."
+              description="Paper-white surfaces, charcoal type, and glowing accents keep the brand calm while the 3D motion makes it feel alive."
+            />
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {productPillars.map((card, index) => {
+              {productCards.map((card, index) => {
                 const Icon = card.icon;
 
                 return (
@@ -351,16 +420,32 @@ function App() {
                     whileInView="show"
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ delay: index * 0.08, ...spring }}
-                    className="rounded-[1.8rem] border border-black/10 bg-white/88 p-6 shadow-[0_24px_70px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                    whileHover={{ y: -8, rotateX: 4, rotateY: -4 }}
+                    style={{ transformStyle: "preserve-3d" }}
+                    className="group relative overflow-hidden rounded-[2rem] border border-black/8 bg-white/82 p-6 shadow-[0_28px_90px_rgba(17,17,17,0.08)] backdrop-blur-2xl"
                   >
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${card.tint} ${card.iconTone}`}>
+                    <div
+                      className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "radial-gradient(circle at top right, rgba(17, 17, 17, 0.05), transparent 40%), radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.72), transparent 58%)",
+                      }}
+                    />
+
+                    <div
+                      className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-black/8 shadow-[0_18px_40px_rgba(17,17,17,0.08)]"
+                      style={{ backgroundColor: card.tint, color: card.accent }}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-[#151515]">
+                    <p className="relative mt-5 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#6a7177]">
+                      {card.eyebrow}
+                    </p>
+                    <h3 className="relative mt-4 font-display text-2xl font-semibold tracking-tight text-[#111111]">
                       {card.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-[#5d6468]">{card.description}</p>
-                    <div className="mt-6 h-1.5 rounded-full bg-black/5">
+                    <p className="relative mt-3 text-sm leading-7 text-[#5b6268]">{card.description}</p>
+                    <div className="relative mt-6 h-1.5 rounded-full bg-black/5">
                       <div className="h-full w-full rounded-full bg-gradient-to-r from-[#8fd8f0] via-[#8dd94b] to-[#ffd84d]" />
                     </div>
                   </motion.article>
@@ -369,65 +454,71 @@ function App() {
             </div>
           </section>
 
-          <section id="flow" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr]">
-              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
-                <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
-                  <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
-                  Flow
-                </p>
-                <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
-                  Designed to feel like the app disappears.
-                </h2>
-                <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
-                  The experience stays calm from the first scan to the final workout suggestion. It is the kind of
-                  product flow that makes a new brand feel real the first time someone opens it.
-                </p>
+          <section id="global" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <div className="grid gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
+              <div>
+                <SectionIntro
+                  eyebrow="Global edition"
+                  title="Built to feel native in many languages."
+                  description="The same product voice now reads cleanly across English, हिंदी, Español, العربية, 日本語, and Français so the website feels ready for a wider market."
+                />
 
-                <ul className="mt-8 space-y-3">
-                  {[
-                    "Photo scans and barcode lookup stay in the same calm flow.",
-                    "Favorites and custom foods keep repeat meals one tap away.",
-                    "Workout guidance adapts to steps, recovery, and time.",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#3f7f10]" />
-                      <span className="text-sm leading-7 text-[#5d6468] sm:text-base">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ delay: 0.06, ...spring }}
+                  className="mt-8 rounded-[2rem] border border-black/8 bg-white/72 p-5 shadow-[0_24px_80px_rgba(17,17,17,0.08)] backdrop-blur-2xl"
+                >
+                  <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#6a7177]">
+                    <Globe className="h-3.5 w-3.5 text-[#0f6f85]" />
+                    Language logic
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-[#5b6268]">
+                    Script balance, right-to-left rhythm, and warmer spacing keep the interface elegant even when the
+                    alphabet changes.
+                  </p>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {brandHighlights.map((item) => (
-                    <div key={item.label} className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#6b6f72]">{item.label}</p>
-                      <p className="mt-2 font-display text-lg font-semibold text-[#151515]">{item.value}</p>
-                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "RTL-aware cards keep Arabic samples readable and elegant.",
+                      "Language chips maintain a consistent rhythm across scripts.",
+                      "The visual system keeps the premium feel without losing clarity.",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#3f7f10]" />
+                        <span className="text-sm leading-7 text-[#5b6268]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </div>
 
-              <div className="space-y-4">
-                {flowSteps.map((step, index) => (
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {languageShowcase.map((item, index) => (
                   <motion.article
-                    key={step.number}
+                    key={item.language}
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.25 }}
-                    transition={{ delay: index * 0.08, ...spring }}
-                    className="rounded-[1.65rem] border border-black/10 bg-white/90 p-5 shadow-[0_22px_60px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: index * 0.05, ...spring }}
+                    whileHover={{ y: -8, rotateX: 4, rotateY: index % 2 === 0 ? 4 : -4 }}
+                    style={{ transformStyle: "preserve-3d" }}
+                    dir={item.dir || "ltr"}
+                    className={`rounded-[1.6rem] border border-black/8 bg-white/84 p-5 shadow-[0_24px_70px_rgba(17,17,17,0.08)] backdrop-blur-2xl ${
+                      item.dir === "rtl" ? "text-right" : ""
+                    }`}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#151515] text-sm font-semibold text-white">
-                        {step.number}
-                      </div>
-                      <div>
-                        <p className="font-display text-xl font-semibold tracking-tight text-[#151515]">{step.title}</p>
-                        <p className="mt-2 text-sm leading-7 text-[#5d6468] sm:text-base">{step.description}</p>
-                      </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[11px] uppercase tracking-[0.3em] text-[#6a7177]">{item.language}</p>
+                      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
                     </div>
+                    <p className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#111111]">
+                      {item.sample}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-[#5b6268]">{item.note}</p>
                   </motion.article>
                 ))}
               </div>
@@ -435,66 +526,79 @@ function App() {
           </section>
 
           <section id="brand" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <div className="grid gap-12 lg:grid-cols-[0.94fr_1.06fr]">
-              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
-                <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
-                  <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
-                  Brand system
-                </p>
-                <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
-                  The logo colors become the interface language.
-                </h2>
-                <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
-                  We pulled the UI from the same paper, charcoal, sky, leaf, sun, and orange palette in the app logo
-                  so the website feels like one product family.
-                </p>
+            <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+              <div>
+                <SectionIntro
+                  eyebrow="Brand system"
+                  title="The logo palette becomes the interface language."
+                  description="The same paper, ink, sky, leaf, sun, and orange tones now spread across the site in more sculpted layers so the brand feels owned, not assembled."
+                />
 
                 <div className="mt-8 grid gap-4">
                   {brandHighlights.map((item) => (
-                    <div key={item.label} className="rounded-[1.5rem] border border-black/10 bg-white/85 p-4">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#6b6f72]">{item.label}</p>
-                      <p className="mt-2 font-display text-lg font-semibold text-[#151515]">{item.value}</p>
-                      <p className="mt-2 text-sm leading-6 text-[#5d6468]">{item.description}</p>
-                    </div>
+                    <motion.div
+                      key={item.label}
+                      variants={fadeUp}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0.25 }}
+                      transition={{ delay: 0.04, ...spring }}
+                      className="rounded-[1.5rem] border border-black/8 bg-white/82 p-4 shadow-[0_18px_50px_rgba(17,17,17,0.06)]"
+                    >
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-[#6a7177]">{item.label}</p>
+                      <p className="mt-2 font-display text-lg font-semibold text-[#111111]">{item.value}</p>
+                      <p className="mt-2 text-sm leading-6 text-[#5b6268]">{item.description}</p>
+                    </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
-                className="rounded-[2rem] border border-black/10 bg-white/90 p-6 shadow-[0_24px_80px_rgba(18,18,18,0.08)] backdrop-blur-xl"
+                transition={{ delay: 0.08, ...spring }}
+                className="rounded-[2.5rem] border border-black/8 bg-white/72 p-6 shadow-[0_32px_100px_rgba(17,17,17,0.08)] backdrop-blur-2xl"
               >
-                <div className="grid gap-4 md:grid-cols-[1.08fr_0.92fr]">
-                  <div className="rounded-[1.8rem] border border-black/8 bg-[#fcfbf8] p-4">
-                    <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-white p-3">
+                <div className="grid gap-4 md:grid-cols-[1.06fr_0.94fr]">
+                  <div className="rounded-[1.8rem] border border-black/8 bg-[#fffdf9] p-4">
+                    <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-white p-3 shadow-inner">
                       <img
                         src="/calray-logo.jpeg?v=20260415"
                         alt="CalRay logo"
                         className="aspect-square w-full rounded-[1.25rem] object-contain"
                       />
                     </div>
-                    <p className="mt-4 text-sm leading-7 text-[#5d6468]">
+                    <p className="mt-4 text-sm leading-7 text-[#5b6268]">
                       The mark stays bold and readable because the website borrows the same black frames, white base,
                       and bright food colors.
                     </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {["Paper", "Ink", "Sky", "Leaf", "Sun", "Orange"].map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-black/8 bg-white/88 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-[#6a7177]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="space-y-3">
                     {palette.map((swatch) => (
                       <div
                         key={swatch.label}
-                        className="flex items-center gap-3 rounded-[1.35rem] border border-black/8 bg-white p-3"
+                        className="flex items-center gap-3 rounded-[1.35rem] border border-black/8 bg-white p-3 shadow-[0_14px_40px_rgba(17,17,17,0.05)]"
                       >
                         <span
                           className="h-12 w-12 rounded-2xl border border-black/8 shadow-inner"
                           style={{ backgroundColor: swatch.color }}
                         />
                         <div className="flex-1">
-                          <p className="font-display text-base font-semibold text-[#151515]">{swatch.label}</p>
-                          <p className="text-xs uppercase tracking-[0.24em] text-[#6b6f72]">{swatch.value}</p>
+                          <p className="font-display text-base font-semibold text-[#111111]">{swatch.label}</p>
+                          <p className="text-xs uppercase tracking-[0.24em] text-[#6a7177]">{swatch.value}</p>
                         </div>
                       </div>
                     ))}
@@ -505,18 +609,11 @@ function App() {
           </section>
 
           <section id="faq" className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="max-w-3xl">
-              <p className="mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">
-                <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#151515] to-transparent" />
-                FAQ
-              </p>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-[#151515] sm:text-4xl lg:text-5xl">
-                Questions people ask when they discover CalRay.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[#5d6468] sm:text-lg">
-                Clear answers also help Google understand the product, the brand, and the founder behind it.
-              </p>
-            </motion.div>
+            <SectionIntro
+              eyebrow="FAQ"
+              title="Questions people ask when they discover CalRay."
+              description="Clear answers help people and search engines understand the founder, the product, and the premium positioning."
+            />
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
               {faqItems.map((item, index) => (
@@ -527,13 +624,14 @@ function App() {
                   whileInView="show"
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ delay: index * 0.08, ...spring }}
-                  className="rounded-[1.75rem] border border-black/10 bg-white/90 p-6 shadow-[0_22px_70px_rgba(18,18,18,0.06)] backdrop-blur-xl"
+                  whileHover={{ y: -6 }}
+                  className="rounded-[1.75rem] border border-black/8 bg-white/82 p-6 shadow-[0_22px_70px_rgba(17,17,17,0.06)] backdrop-blur-2xl"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6b6f72]">Answer</p>
-                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#151515]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6a7177]">Answer</p>
+                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#111111]">
                     {item.question}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-[#5d6468] sm:text-base">{item.answer}</p>
+                  <p className="mt-4 text-sm leading-7 text-[#5b6268] sm:text-base">{item.answer}</p>
                 </motion.article>
               ))}
             </div>
@@ -541,23 +639,23 @@ function App() {
         </main>
 
         <footer className="px-6 pb-10 lg:px-8">
-          <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 rounded-[2rem] border border-black/10 bg-white/90 p-6 shadow-[0_24px_80px_rgba(18,18,18,0.08)] backdrop-blur-xl md:flex-row md:items-center lg:px-8 lg:py-7">
-            <BrandMark size={56} label="CalRay" subtitle="AI calorie and fitness tracker coach" />
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-6 rounded-[2rem] border border-black/8 bg-white/72 p-6 shadow-[0_28px_100px_rgba(17,17,17,0.08)] backdrop-blur-2xl md:flex-row md:items-center lg:px-8 lg:py-7">
+            <BrandMark size={56} label="CalRay" subtitle="Spatial AI calorie and fitness tracker coach" />
 
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6b6f72]">Created by Hitesh Kasalya</p>
-              <h2 id="cta" className="mt-3 font-display text-2xl font-semibold tracking-tight text-[#151515] sm:text-3xl">
-                Bring the same premium feel into the app.
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6a7177]">Created by Hitesh Kasalya</p>
+              <h2 id="cta" className="mt-3 font-display text-2xl font-semibold tracking-tight text-[#111111] sm:text-3xl">
+                Bring the same spatial feel into the app.
               </h2>
-              <p className="mt-3 text-sm leading-7 text-[#5d6468] sm:text-base">
-                CalRay now looks and feels like a real startup brand: clean, high contrast, and built around the logo
-                colors from the app.
+              <p className="mt-3 text-sm leading-7 text-[#5b6268] sm:text-base">
+                CalRay now looks and feels like a real premium startup brand: clean, high-contrast, and built around
+                the logo colors from the app.
               </p>
             </div>
 
             <a
               href="#home"
-              className="inline-flex items-center gap-2 rounded-full bg-[#151515] px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-[#111111] px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5"
             >
               Get started
               <ArrowRight className="h-4.5 w-4.5" />
