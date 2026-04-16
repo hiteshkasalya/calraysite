@@ -1,28 +1,28 @@
 export const brandName = "CalRay";
 
-export const siteTitle = "CalRay: Premium AI calorie and fitness tracker coach";
+export const siteTitle = "CalRay Coming Soon | AI Calorie Intelligence";
 
 export const siteDescription =
-  "Official CalRay website by Hitesh Kasalya. A premium spatial home for CalRay with meal scans, barcode lookup, favorites, custom foods, workout planning, and multilingual design accents.";
+  "CalRay brings AI calorie detection, barcode meal lookup, macro memory, and fitness coaching into one fast daily app.";
 
 export const siteKeywords =
-  "CalRay, Calray, Calray AI, Hitesh Kasalya, premium AI calorie tracker, fitness tracker coach, meal scan, barcode lookup, custom foods, workout planning, 3D landing page, multilingual design";
+  "CalRay, Calray, Calray AI, Hitesh Kasalya, coming soon, AI calorie intelligence, AI calorie detector, barcode meal lookup, macro tracker, fitness coach";
 
 export const brandHighlights = [
   {
     label: "Brand",
     value: "CalRay",
-    description: "A premium nutrition brand with a spatial web presence.",
+    description: "A cinematic AI calorie intelligence product moving toward launch.",
   },
   {
     label: "Founder",
     value: "Hitesh Kasalya",
-    description: "The creator behind CalRay and the product direction.",
+    description: "The creator behind CalRay and its product direction.",
   },
   {
-    label: "Scale",
-    value: "Global feel",
-    description: "English, हिंदी, Español, العربية, 日本語, and Français touchpoints make the site feel ready to travel.",
+    label: "Launch",
+    value: "Coming soon",
+    description: "The public website is holding for launch while the product is tuned.",
   },
 ];
 
@@ -30,64 +30,44 @@ export const faqItems = [
   {
     question: "What is CalRay?",
     answer:
-      "CalRay is an AI calorie and fitness tracker coach built to keep meal logging, barcode scans, and workout guidance in one calm flow.",
+      "CalRay is an AI calorie intelligence product for calorie detection, meal understanding, fitness coaching, and daily progress.",
   },
   {
     question: "Who built CalRay?",
-    answer: "Hitesh Kasalya built CalRay and shaped the product around real daily nutrition and training use.",
+    answer: "Hitesh Kasalya built CalRay and shaped the product around real nutrition and training use.",
   },
   {
-    question: "What makes this website feel premium?",
-    answer:
-      "Layered glass panels, 3D motion, warm lighting, and multilingual touchpoints give the site a more luxurious, global feel.",
+    question: "When is CalRay launching?",
+    answer: "CalRay is in a private build phase and the launch page will announce the first early access wave when it is ready.",
   },
 ];
 
 export const palette = [
-  { label: "Paper", value: "#fcfbf8", color: "#fcfbf8" },
-  { label: "Ink", value: "#151515", color: "#151515" },
-  { label: "Sky", value: "#8fd8f0", color: "#8fd8f0" },
+  { label: "Paper", value: "#fbfdff", color: "#fbfdff" },
+  { label: "Ink", value: "#101010", color: "#101010" },
+  { label: "Sky", value: "#61d7ff", color: "#61d7ff" },
   { label: "Leaf", value: "#8dd94b", color: "#8dd94b" },
-  { label: "Sun", value: "#ffd84d", color: "#ffd84d" },
-  { label: "Orange", value: "#f89b4c", color: "#f89b4c" },
+  { label: "Gold", value: "#ffd84d", color: "#ffd84d" },
+  { label: "Coral", value: "#ff6b5f", color: "#ff6b5f" },
 ];
 
 export const languageShowcase = [
   {
     language: "English",
-    sample: "Log meal beautifully",
-    note: "Default premium tone",
-    color: "#8fd8f0",
+    sample: "Track progress clearly",
+    note: "Calm launch tone",
+    color: "#61d7ff",
   },
   {
-    language: "हिंदी",
-    sample: "भोजन लॉग करें",
-    note: "Localized script balance",
+    language: "Global",
+    sample: "Built for daily use",
+    note: "Simple product language",
     color: "#8dd94b",
   },
   {
-    language: "Español",
-    sample: "Registrar comida",
-    note: "Warm and quick",
+    language: "Launch",
+    sample: "First wave soon",
+    note: "No date promised yet",
     color: "#ffd84d",
-  },
-  {
-    language: "العربية",
-    sample: "تسجيل وجبة",
-    note: "RTL-ready feel",
-    color: "#f89b4c",
-    dir: "rtl",
-  },
-  {
-    language: "日本語",
-    sample: "食事を記録",
-    note: "Compact composition",
-    color: "#8fd8f0",
-  },
-  {
-    language: "Français",
-    sample: "Enregistrer un repas",
-    note: "Polished and calm",
-    color: "#8dd94b",
   },
 ];
