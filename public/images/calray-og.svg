@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="calray-og-bg" x1="80" y1="50" x2="1040" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7ff"/>
+      <stop offset=".42" stop-color="#c9c2ff"/>
+      <stop offset="1" stop-color="#00f0ff"/>
+    </linearGradient>
+    <linearGradient id="calray-og-mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff73d4"/>
+      <stop offset=".52" stop-color="#8d68ff"/>
+      <stop offset="1" stop-color="#00f0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#calray-og-bg)"/>
+  <circle cx="960" cy="160" r="210" fill="#fff" fill-opacity=".35"/>
+  <circle cx="1060" cy="480" r="170" fill="#20174e" fill-opacity=".16"/>
+  <circle cx="155" cy="165" r="64" fill="url(#calray-og-mark)"/>
+  <text x="240" y="190" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="800" fill="#20174e">CalRay</text>
+  <text x="84" y="340" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff">AI Calories in Seconds</text>
+  <text x="88" y="420" font-family="Inter, Arial, sans-serif" font-size="34" fill="#20174e">Photo meals, barcode scans, macro memory, and fitness coaching in one calm daily flow.</text>
+</svg>

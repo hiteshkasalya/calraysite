@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="CalRay progress river visual">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#070414"/>
+      <stop offset=".24" stop-color="#25345a"/>
+      <stop offset=".5" stop-color="#087c8d"/>
+      <stop offset=".76" stop-color="#6f36ff"/>
+      <stop offset="1" stop-color="#ff7a59"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2ff3da"/>
+      <stop offset=".48" stop-color="#7b58ff"/>
+      <stop offset="1" stop-color="#ffcf52"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="36" stdDeviation="36" flood-color="#010008" flood-opacity=".54"/>
+    </filter>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <path d="M-80 680c210-170 376-60 550-168s330-346 600-244 390 22 610-124v856H-80Z" fill="#ffffff" opacity=".08"/>
+  <path d="M-60 720c250-160 370-58 538-158s310-290 548-186 410 88 646-86" fill="none" stroke="url(#river)" stroke-width="62" stroke-linecap="round" opacity=".86" filter="url(#blur)"/>
+  <path d="M-60 720c250-160 370-58 538-158s310-290 548-186 410 88 646-86" fill="none" stroke="url(#river)" stroke-width="18" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="270" y="174" width="1060" height="652" rx="64" fill="#07041b" opacity=".88"/>
+    <text x="336" y="264" fill="#ffffff" font-family="Inter, Arial" font-size="42" font-weight="800">progress river</text>
+    <text x="336" y="314" fill="#dffcff" font-family="Inter, Arial" font-size="24">Calories, protein, workouts, and habit streaks move together.</text>
+    <g transform="translate(336 408)">
+      <rect width="214" height="250" rx="34" fill="#ffffff" opacity=".12"/>
+      <rect x="38" y="72" width="138" height="124" rx="24" fill="#2ff3da" opacity=".84"/>
+      <text x="38" y="48" fill="#fff" font-family="Inter, Arial" font-size="24" font-weight="800">Mon</text>
+      <text x="54" y="228" fill="#fff" font-family="Inter, Arial" font-size="22" font-weight="700">91%</text>
+    </g>
+    <g transform="translate(598 408)">
+      <rect width="214" height="250" rx="34" fill="#ffffff" opacity=".12"/>
+      <rect x="38" y="44" width="138" height="152" rx="24" fill="#7b58ff" opacity=".84"/>
+      <text x="38" y="48" fill="#fff" font-family="Inter, Arial" font-size="24" font-weight="800">Tue</text>
+      <text x="54" y="228" fill="#fff" font-family="Inter, Arial" font-size="22" font-weight="700">108%</text>
+    </g>
+    <g transform="translate(860 408)">
+      <rect width="214" height="250" rx="34" fill="#ffffff" opacity=".12"/>
+      <rect x="38" y="92" width="138" height="104" rx="24" fill="#ffcf52" opacity=".88"/>
+      <text x="38" y="48" fill="#fff" font-family="Inter, Arial" font-size="24" font-weight="800">Wed</text>
+      <text x="54" y="228" fill="#fff" font-family="Inter, Arial" font-size="22" font-weight="700">84%</text>
+    </g>
+    <rect x="336" y="708" width="384" height="58" rx="29" fill="#ffffff" opacity=".15"/>
+    <text x="368" y="746" fill="#ffffff" font-family="Inter, Arial" font-size="24" font-weight="800">streak: 12 clear days</text>
+  </g>
+</svg>

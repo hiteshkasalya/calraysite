@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="CalRay AI nutrition cockpit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#100738"/>
+      <stop offset=".42" stop-color="#23105f"/>
+      <stop offset=".72" stop-color="#5a27d9"/>
+      <stop offset="1" stop-color="#00dce8"/>
+    </linearGradient>
+    <radialGradient id="glowPink" cx=".25" cy=".2" r=".55">
+      <stop offset="0" stop-color="#ff73d4" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ff73d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCyan" cx=".78" cy=".28" r=".5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity=".86"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#060118" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glowPink)"/>
+  <rect width="1600" height="900" fill="url(#glowCyan)"/>
+  <g opacity=".32" stroke="#fff" stroke-width="1">
+    <path d="M0 170h1600M0 340h1600M0 510h1600M0 680h1600"/>
+    <path d="M170 0v900M340 0v900M510 0v900M680 0v900M850 0v900M1020 0v900M1190 0v900M1360 0v900"/>
+  </g>
+  <ellipse cx="800" cy="750" rx="610" ry="80" fill="#070213" opacity=".45" filter="url(#soft)"/>
+  <g filter="url(#shadow)">
+    <path d="M280 142h1040c40 0 72 32 72 72v520H208V214c0-40 32-72 72-72Z" fill="#09041f"/>
+    <path d="M252 190h1096v492H252Z" fill="#0e0832"/>
+    <path d="M252 190h1096v492H252Z" fill="#ffffff" opacity=".04"/>
+    <path d="M168 734h1264l-82 74H250Z" fill="#191050"/>
+    <path d="M362 752h876l-30 24H392Z" fill="#ffffff" opacity=".12"/>
+  </g>
+  <g transform="translate(305 240)">
+    <rect x="0" y="0" width="360" height="360" rx="38" fill="#ffffff" opacity=".08"/>
+    <rect x="34" y="36" width="292" height="292" rx="146" fill="#ffffff" opacity=".07"/>
+    <circle cx="180" cy="182" r="120" fill="#ff73d4" opacity=".22"/>
+    <circle cx="180" cy="182" r="82" fill="#00f0ff" opacity=".2"/>
+    <path d="M88 220c48-88 124-112 216-68-34 70-95 100-183 91-10-1-21-10-33-23Z" fill="#f8fbff"/>
+    <circle cx="203" cy="166" r="13" fill="#20174e"/>
+    <path d="M104 229c34 18 66 24 96 17" fill="none" stroke="#ff7b39" stroke-width="10" stroke-linecap="round"/>
+    <text x="42" y="54" fill="#fff" font-family="Inter, Arial" font-size="22" font-weight="700">meal scan</text>
+    <text x="42" y="322" fill="#00f0ff" font-family="Inter, Arial" font-size="28" font-weight="800">612 kcal</text>
+  </g>
+  <g transform="translate(715 246)">
+    <rect x="0" y="0" width="520" height="150" rx="28" fill="#ffffff" opacity=".1"/>
+    <text x="32" y="52" fill="#fff" font-family="Inter, Arial" font-size="26" font-weight="800">AI macro readout</text>
+    <text x="32" y="94" fill="#d7d2ff" font-family="Inter, Arial" font-size="20">protein target on track</text>
+    <rect x="340" y="38" width="132" height="72" rx="22" fill="#00f0ff" opacity=".24"/>
+    <text x="369" y="84" fill="#fff" font-family="Inter, Arial" font-size="26" font-weight="800">82%</text>
+  </g>
+  <g transform="translate(715 430)" fill="none" stroke-linecap="round">
+    <rect x="0" y="0" width="520" height="180" rx="30" fill="#ffffff" opacity=".08" stroke="none"/>
+    <path d="M52 126c44-92 88-28 132-72s88 60 132 8 88-4 148-74" stroke="#00f0ff" stroke-width="8"/>
+    <path d="M52 130c44-40 88-12 132-36s88 24 132 2 88-2 148-40" stroke="#ff73d4" stroke-width="8" opacity=".85"/>
+    <text x="32" y="50" fill="#fff" font-family="Inter, Arial" font-size="24" font-weight="800" stroke="none">weekly momentum</text>
+    <text x="32" y="152" fill="#d7d2ff" font-family="Inter, Arial" font-size="18" stroke="none">calories, protein, workouts</text>
+  </g>
+  <g opacity=".9">
+    <circle cx="1320" cy="188" r="7" fill="#fff"/>
+    <circle cx="1265" cy="660" r="5" fill="#00f0ff"/>
+    <circle cx="165" cy="330" r="6" fill="#ff73d4"/>
+    <circle cx="1430" cy="420" r="8" fill="#fff"/>
+  </g>
+</svg>
