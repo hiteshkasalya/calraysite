@@ -25,20 +25,20 @@ export default function Navbar({ onOpenDownload }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0b0e14]/90 backdrop-blur-md border-b border-white/10 py-3.5 shadow-xl"
+          ? "bg-white/85 backdrop-blur-md border-b border-slate-200 py-3.5 shadow-sm"
           : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-slate-800 border border-white/15 flex items-center justify-center text-emerald-400">
-            <Flame className="w-5 h-5 fill-emerald-400/20" />
+          <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md">
+            <Flame className="w-5 h-5 fill-white/20" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+            <span className="font-bold text-lg tracking-tight text-slate-900 flex items-center gap-2">
               CalRay
-              <span className="text-[10px] text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full font-mono">
+              <span className="text-[10px] text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-mono font-medium">
                 App Showcase
               </span>
             </span>
@@ -46,12 +46,12 @@ export default function Navbar({ onOpenDownload }) {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-900/80 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md">
+        <nav className="hidden md:flex items-center gap-1 bg-white border border-slate-200 shadow-sm rounded-full px-4 py-1.5">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all"
+              className="px-3.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-all"
             >
               {link.name}
             </a>
@@ -62,7 +62,7 @@ export default function Navbar({ onOpenDownload }) {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={onOpenDownload}
-            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-full transition-all duration-200 shadow-md hover:shadow-emerald-500/20"
+            className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-md"
           >
             <Download className="w-4 h-4" />
             <span>Download CalRay</span>
@@ -72,35 +72,35 @@ export default function Navbar({ onOpenDownload }) {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-slate-300 hover:text-white p-2 rounded-xl bg-slate-900 border border-white/10"
+          className="md:hidden text-slate-700 hover:text-slate-900 p-2 rounded-xl bg-white border border-slate-200 shadow-sm"
           aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Navigation Dropdown */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0b0e14]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-4">
+        <div className="md:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-sm font-medium text-slate-200 hover:text-emerald-400 hover:bg-white/5 rounded-xl transition-all"
+                className="px-4 py-2.5 text-sm font-medium text-slate-700 hover:text-emerald-600 hover:bg-slate-50 rounded-xl transition-all"
               >
                 {link.name}
               </a>
             ))}
           </div>
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t border-slate-200">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenDownload();
               }}
-              className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-slate-950 font-bold text-sm py-3 rounded-xl shadow-lg"
+              className="w-full flex items-center justify-center gap-2 bg-slate-900 text-white font-bold text-sm py-3 rounded-xl shadow-md"
             >
               <Download className="w-4 h-4" />
               <span>Download CalRay App</span>

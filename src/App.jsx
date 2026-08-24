@@ -25,12 +25,12 @@ function App() {
   return (
     <>
       <SeoHead />
-      <div className="min-h-screen bg-[#0b0e14] text-slate-100 font-sans antialiased">
+      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased">
         {/* Navigation Header */}
         <Navbar onOpenDownload={handleOpenDownload} />
 
         <main>
-          {/* 1. Product Hero */}
+          {/* 1. Light Product Hero */}
           <HeroSection onOpenDownload={handleOpenDownload} />
 
           {/* 2. Multimodal Calorie Engine Feature Showcase (Photo, Barcode, Text) */}
