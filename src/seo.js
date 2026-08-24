@@ -1,73 +1,74 @@
 export const brandName = "CalRay";
 
-export const siteTitle = "CalRay Coming Soon | AI Calorie Intelligence";
+export const siteTitle = "CalRay Android Test Launch | AI Calorie Tracker";
 
 export const siteDescription =
-  "CalRay brings AI calorie detection, barcode meal lookup, macro memory, and fitness coaching into one fast daily app.";
+  "CalRay is opening Android test access for an AI calorie tracking app with meal photo scans, barcode logging, macro memory, and daily fitness coaching.";
 
 export const siteKeywords =
-  "CalRay, Calray, Calray AI, Hitesh Kasalya, coming soon, AI calorie intelligence, AI calorie detector, barcode meal lookup, macro tracker, fitness coach";
+  "CalRay, Calray, Calray AI, Android test build, Download for Android, AI calorie tracker, calorie scanner, meal photo scan, barcode food log, macro tracker, fitness coach";
 
 export const brandHighlights = [
   {
     label: "Brand",
     value: "CalRay",
-    description: "A cinematic AI calorie intelligence product moving toward launch.",
+    description: "AI calorie tracking and fitness coaching for daily nutrition.",
   },
   {
-    label: "Founder",
-    value: "Hitesh Kasalya",
-    description: "The creator behind CalRay and its product direction.",
+    label: "Platform",
+    value: "Android",
+    description: "The first test-user wave is focused on Android access.",
   },
   {
     label: "Launch",
-    value: "Coming soon",
-    description: "The public website is holding for launch while the product is tuned.",
+    value: "Private test wave",
+    description: "Approved testers can request the Android build before public launch.",
   },
 ];
 
 export const faqItems = [
   {
-    question: "What is CalRay?",
+    question: "How do I download CalRay for Android?",
     answer:
-      "CalRay is an AI calorie intelligence product for calorie detection, meal understanding, fitness coaching, and daily progress.",
+      "Join the Android tester wave from the launch page. Approved testers receive the CalRay Android build link when their wave opens.",
   },
   {
-    question: "Who built CalRay?",
-    answer: "Hitesh Kasalya built CalRay and shaped the product around real nutrition and training use.",
+    question: "What does CalRay do?",
+    answer:
+      "CalRay helps users scan meals, log packaged foods with barcodes, track calories and macros, and follow daily fitness coaching.",
   },
   {
-    question: "When is CalRay launching?",
-    answer: "CalRay is in a private build phase and the launch page will announce the first early access wave when it is ready.",
+    question: "Is CalRay public yet?",
+    answer: "CalRay is preparing its Android test-user launch before a wider public release.",
   },
 ];
 
 export const palette = [
-  { label: "Paper", value: "#fbfdff", color: "#fbfdff" },
-  { label: "Ink", value: "#101010", color: "#101010" },
-  { label: "Sky", value: "#61d7ff", color: "#61d7ff" },
-  { label: "Leaf", value: "#8dd94b", color: "#8dd94b" },
-  { label: "Gold", value: "#ffd84d", color: "#ffd84d" },
-  { label: "Coral", value: "#ff6b5f", color: "#ff6b5f" },
+  { label: "Paper", value: "#f7fbff", color: "#f7fbff" },
+  { label: "Ink", value: "#111514", color: "#111514" },
+  { label: "Mist", value: "#e9fbf6", color: "#e9fbf6" },
+  { label: "Aqua", value: "#6ee7e0", color: "#6ee7e0" },
+  { label: "Leaf", value: "#8fe56a", color: "#8fe56a" },
+  { label: "Coral", value: "#ff7768", color: "#ff7768" },
 ];
 
 export const languageShowcase = [
   {
-    language: "English",
-    sample: "Track progress clearly",
-    note: "Calm launch tone",
-    color: "#61d7ff",
-  },
-  {
-    language: "Global",
-    sample: "Built for daily use",
-    note: "Simple product language",
-    color: "#8dd94b",
+    language: "Android",
+    sample: "Download for Android",
+    note: "Primary test-user action",
+    color: "#111514",
   },
   {
     language: "Launch",
-    sample: "First wave soon",
-    note: "No date promised yet",
-    color: "#ffd84d",
+    sample: "First wave access",
+    note: "Private testing tone",
+    color: "#196c5a",
+  },
+  {
+    language: "Product",
+    sample: "Scan real meals",
+    note: "Clear app promise",
+    color: "#ff7768",
   },
 ];

@@ -161,7 +161,7 @@ export default function SeoHead() {
     name: brandName,
     alternateName: "Calray AI",
     applicationCategory: "HealthApplication",
-    operatingSystem: "Web",
+    operatingSystem: "Android",
     url: currentUrl || "/",
     description: siteDescription,
     creator: {
