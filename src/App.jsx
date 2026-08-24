@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import SeoHead from "./components/SeoHead";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import CalorieTrackerDemo from "./components/CalorieTrackerDemo";
-import WorkoutPlannerDemo from "./components/WorkoutPlannerDemo";
-import AICoachDemo from "./components/AICoachDemo";
-import AppPreviewShowcase from "./components/AppPreviewShowcase";
+import ProductFeaturesShowcase from "./components/ProductFeaturesShowcase";
+import WorkoutFeatureShowcase from "./components/WorkoutFeatureShowcase";
+import AICoachShowcase from "./components/AICoachShowcase";
 import ComparisonSection from "./components/ComparisonSection";
-import ROICalculator from "./components/ROICalculator";
 import TestimonialsSection from "./components/TestimonialsSection";
 import FAQSection from "./components/FAQSection";
 import DownloadModal from "./components/DownloadModal";
@@ -24,56 +22,40 @@ function App() {
     setIsDownloadOpen(false);
   };
 
-  const handleNavigateSection = (sectionId) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <SeoHead />
-      <div className="min-h-screen bg-[#070913] text-slate-100 selection:bg-emerald-500/40 selection:text-white font-sans antialiased">
-        {/* Sticky Header Navbar */}
+      <div className="min-h-screen bg-[#0b0e14] text-slate-100 font-sans antialiased">
+        {/* Navigation Header */}
         <Navbar onOpenDownload={handleOpenDownload} />
 
         <main>
-          {/* 1. Hero Section */}
-          <HeroSection
-            onOpenDownload={handleOpenDownload}
-            onNavigateSection={handleNavigateSection}
-          />
+          {/* 1. Product Hero */}
+          <HeroSection onOpenDownload={handleOpenDownload} />
 
-          {/* 2. Interactive Multimodal AI Calorie Tracker (Text, Barcode, Photo) */}
-          <CalorieTrackerDemo />
+          {/* 2. Multimodal Calorie Engine Feature Showcase (Photo, Barcode, Text) */}
+          <ProductFeaturesShowcase />
 
-          {/* 3. Interactive AI Workout & Routine Planner (Age, Weight, Height, Gym vs Home, Body Focus) */}
-          <WorkoutPlannerDemo />
+          {/* 3. Personalized Workout Generator Feature Showcase */}
+          <WorkoutFeatureShowcase />
 
-          {/* 4. Live 24/7 AI Fitness Coach Chat Playground */}
-          <AICoachDemo />
+          {/* 4. Natural AI Coach Guidance Feature Showcase */}
+          <AICoachShowcase />
 
-          {/* 5. Interactive Mobile App Tour & Screen Switcher */}
-          <AppPreviewShowcase onOpenDownload={handleOpenDownload} />
-
-          {/* 6. Comparison Table (CalRay AI vs Old Apps) */}
+          {/* 5. Feature Comparison Table */}
           <ComparisonSection onOpenDownload={handleOpenDownload} />
 
-          {/* 7. Time & Money Savings ROI Calculator */}
-          <ROICalculator onOpenDownload={handleOpenDownload} />
-
-          {/* 8. Verified User Transformations & Testimonials */}
+          {/* 6. User Reviews */}
           <TestimonialsSection />
 
-          {/* 9. FAQ Accordion */}
+          {/* 7. FAQ Accordion */}
           <FAQSection />
         </main>
 
         {/* Footer */}
         <Footer onOpenDownload={handleOpenDownload} />
 
-        {/* Global Download Modal Popup */}
+        {/* Download Modal Popup */}
         <DownloadModal isOpen={isDownloadOpen} onClose={handleCloseDownload} />
       </div>
     </>
